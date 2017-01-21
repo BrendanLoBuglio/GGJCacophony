@@ -4,8 +4,8 @@ using UnityEngine;
 
 public static class MorseUtility
 {
-    public const int spaceBetweenLetters    = 4;
-    public const int spaceBetweenWords      = 10;
+    public const int spaceBetweenLetters    = 5;
+    public const int spaceBetweenWords      = 11;
 
     public static string GenerateMorseSentence(string input)
     {
