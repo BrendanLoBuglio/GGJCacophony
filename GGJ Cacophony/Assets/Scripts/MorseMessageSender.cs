@@ -17,6 +17,7 @@ public class MorseMessageSender : MonoBehaviour
 
     public void PushMorseString()
     {
-        morseController.PlayMorseString(textField.text);
+        string convertedMorse = MorseUtility.GenerateMorseSentence(textField.text);
+        morseController.PlayMorseString(convertedMorse);
     }
 }

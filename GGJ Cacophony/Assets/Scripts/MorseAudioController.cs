@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class MorseAudioController : MonoBehaviour
 {
-    [SerializeField] private float dotLength = 0.12f; //50 wpm
+    [SerializeField] private float dotLength = 0.09f;
 
     private AudioSource mAudioSource;
     private string currentSentence;
@@ -30,6 +30,8 @@ public class MorseAudioController : MonoBehaviour
 
     private IEnumerator playMorseSequence(string morseStringIn)
     {
+        Debug.Log("Interpretting Morse " + morseStringIn);
+
         for (int i = 0; i < morseStringIn.Length; i++) {
             char morseChar = morseStringIn[i];
             switch (morseChar) {
