@@ -46,7 +46,9 @@ public class PlayerState : MonoBehaviour {
     public void EnterRoom(Room room)
     {
         currentRoom = room;
-        TextLog.AddTextLineToTextLog(currentRoom.description);
+        TextLog.AddTextLineToTextLog(currentRoom.name + " - ");
+        TextLog.AddTextLineToTextLog(currentRoom.description, false);
+
     }
 
 }

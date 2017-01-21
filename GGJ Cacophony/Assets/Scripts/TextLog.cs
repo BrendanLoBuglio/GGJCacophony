@@ -20,15 +20,18 @@ public class TextLog : MonoBehaviour {
         }
     }
 
-    public static void AddTextLineToTextLog(string line)
+    public static void AddTextLineToTextLog(string line, bool addSpace = true)
     {
-        instance.AddTextLine(line);
+        instance.AddTextLine(line, addSpace);
     }
 
-	public void AddTextLine(string line)
+	public void AddTextLine(string line, bool addSpace = true)
     {
         // print a line for space
-        PrintLine("");
+        if (addSpace)
+        {
+            PrintLine("");
+        }
         StartCoroutine(RecursivelyPrintLines(line));
         
     }
