@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class HostNetworkManager : NetworkManager{
 
-    public static readonly string hostIP = "10.120.118.229";
+    public static readonly string hostIP = "192.168.43.54";
     public static readonly int port = 7777;
 
     // Use this for initialization
