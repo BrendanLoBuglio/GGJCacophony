@@ -79,6 +79,9 @@
     <Compile Include="Assets\Scripts\EntryField.cs" />
     <Compile Include="Assets\Scripts\HostNetworkManager.cs" />
     <Compile Include="Assets\Scripts\MessageSender.cs" />
+    <Compile Include="Assets\Scripts\MorseAudioController.cs" />
+    <Compile Include="Assets\Scripts\MorseMessageSender.cs" />
+    <Compile Include="Assets\Scripts\MorseUtility.cs" />
     <Compile Include="Assets\Scripts\Room.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
