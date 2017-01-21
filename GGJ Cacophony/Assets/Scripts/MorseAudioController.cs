@@ -20,6 +20,8 @@ public class MorseAudioController : MonoBehaviour
 
     public void PlayMorseString(string morseStringIn)
     {
+        morseStringIn = MorseUtility.GenerateMorseSentence(morseStringIn);
+
         if(morseCoroutine != null) {
             this.StopCoroutine(morseCoroutine);
         }
