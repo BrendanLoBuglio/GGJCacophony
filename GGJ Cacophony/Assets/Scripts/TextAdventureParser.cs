@@ -15,6 +15,10 @@ public class TextAdventureParser : MonoBehaviour {
 
 	public void ParseMessage(string message)
     {
+        if (!Input.GetKey(KeyCode.Return))
+        {
+            return;
+        }
         if (!gameStarted)
         {
             StartGame();
@@ -23,6 +27,10 @@ public class TextAdventureParser : MonoBehaviour {
         if (TextLog.GameOver)
         {
             Application.Quit();
+            return;
+        }
+        if (message == "")
+        {
             return;
         }
         if (message.Replace(" ", "") != "")
@@ -55,11 +63,29 @@ public class TextAdventureParser : MonoBehaviour {
             case "east":
             case "west":
             case "south":
+            case "n":
+            case "e":
+            case "w":
+            case "s":
                 WalkInDirection(stringToDirection(splitMessage[0]));
                 break;
             case "inspect":
             case "check":
-                Inspect(splitMessage[1]);
+                if (splitMessage.Length > 1)
+                {
+                    Inspect(splitMessage[1]);
+                }
+                else
+                {
+                    Look();
+                }
+                break;
+            case "look":
+            case "repeat":
+                Look();
+                break;
+            case "do":
+                Do();
                 break;
             case "":
                 break;
@@ -69,6 +95,42 @@ public class TextAdventureParser : MonoBehaviour {
                     ProcessActionOnNoun(splitMessage);
                 }
                 break;
+        }
+    }
+
+    public void Look()
+    {
+        PlayerState.instance.EnterRoom(PlayerState.instance.currentRoom);
+    }
+
+    public void Do()
+    {
+        Room currentRoom = PlayerState.instance.currentRoom;
+        List<string> verbs = new List<string>();
+        foreach(WorldObject o in currentRoom.objects)
+        {
+            foreach(VerbNounAction verb in o.validActions)
+            {
+                string firstAlias = verb.actionName.Split(';')[0];
+                if (!verbs.Contains(firstAlias))
+                {
+                    verbs.Add(firstAlias);
+                }
+            }
+        }
+        if (verbs.Count > 0)
+        {
+            TextLog.AddTextLineToTextLog("You can", false);
+            for (int k = 0; k < verbs.Count; k++)
+            {
+                TextLog.AddTextLineToTextLog(verbs[k], false);
+            }
+            TextLog.AddWhiteSpace();
+        }
+
+        else
+        {
+            TextLog.AddTextLineToTextLog("You can't do much here");
         }
     }
 
@@ -175,13 +237,22 @@ public class TextAdventureParser : MonoBehaviour {
 
     public void Help()
     {
-        TextLog.instance.AddTextLine(helpText);
+        TextLog.AddTextLineToTextLog(helpText);
     }
 
     public void Pulse(string[] splitMessage)
     {
         System.Text.StringBuilder builder = new System.Text.StringBuilder();
+        bool first = true;
         for(int k=1; k < splitMessage.Length; k++){
+            if (first)
+            {
+                first = false;
+            }
+            else
+            {
+                builder.Append(" ");
+            }
             builder.Append(splitMessage[k]);
         }
         string messageToSend = builder.ToString();
@@ -230,12 +301,16 @@ public class TextAdventureParser : MonoBehaviour {
         switch (inString)
         {
             case "north":
+            case "n":
                 return Direction.north;
             case "east":
+            case "e":
                 return Direction.east;
             case "west":
+            case "w":
                 return Direction.west;
             case "south":
+            case "s":
                 return Direction.south;
         }
         return null;

@@ -18,10 +18,10 @@ MonoBehaviour:
     in your path before you can slip past. \u201CYou know I cannot permit you entrance
     until you give the passphrase.\u201D"
   objects:
-  - name: "guard \u201Cfourwordsalluppercase\u201D;guard fourwordsalluppercase"
+  - name: "guard \u201Cfourwordsalluppercase\u201D;guard fourwordsalluppercase;fourwordsalluppercase"
     inspectionDescription: 
     validActions:
-    - actionName: tell
+    - actionName: tell;say
       events:
       - actionDescription: "\u201CONE WORD ALL LOWERCASE,\u201D replies the guard,
           and he bows his head as you pass. Gilt doors of ponderous weight creak open
@@ -46,6 +46,29 @@ MonoBehaviour:
               m_CallState: 2
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 1
+    active: 1
+  - name: guard
+    inspectionDescription: 
+    validActions:
+    - actionName: tell;say
+      events:
+      - actionDescription: The guard won't say anything until you provide him with
+          the password.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: ask
+      events:
+      - actionDescription: That would defeat the point of a password wouldn't it?
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 1
     active: 1
   connections:
   - direction: 3
