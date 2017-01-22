@@ -6,11 +6,10 @@ public class KeyInAudio : MonoBehaviour
 
 
 {
-	public AudioSource thesound;
 
 
 	// Use this for initialization
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
@@ -18,6 +17,7 @@ public class KeyInAudio : MonoBehaviour
 		if (Input.GetKey (KeyCode.Q)) {
 			AudioSource audio = GetComponent<AudioSource> ();
 			audio.Play ();
+
 		}
 	}
 }
