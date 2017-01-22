@@ -121,7 +121,9 @@ public class TextLog : MonoBehaviour {
 
     IEnumerator RecursivelyPrintLines()
     {
-        EntryField.inputField.interactable = false;
+        if (EntryField.inputField.interactable) {
+            EntryField.inputField.interactable = false;
+        }
         string message = printQueue.Dequeue();
         message = PrintLine(message);
         while(message.Length > 0 || printQueue.Count != 0)
