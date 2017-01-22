@@ -71,10 +71,6 @@ public class MorseAudioController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) {
-            EnqueueMorseString("This is the test string");
-        }
-
         interpretControlInput();
         manageMorseStateMachine();
     }
