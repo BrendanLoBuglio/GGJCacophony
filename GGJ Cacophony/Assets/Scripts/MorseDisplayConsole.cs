@@ -11,7 +11,6 @@ public class MorseDisplayConsole : MonoBehaviour
     private const int displayRows = 6;
     private const int readingHeadOffset = 10;
     private const string borderDeco = "# ";
-    private const string processingTest = "PROCESSING SIGNAL AT 1.0X SPEED";
     private const string readingCurrentTest = "YOU ARE READING THE CURRENT MESSAGE";
     private const string pressTabMessageTest = "PRESS <TAB> TO ACCEPT NEW MESSAGE";
 
@@ -42,7 +41,17 @@ public class MorseDisplayConsole : MonoBehaviour
                 }
             }
             else if(r == 1) {
-                mText.text += drawStringWithPadding(Mathf.FloorToInt((float)noDecoWidth / 2f), processingTest);
+                string speed = "" + MorseAudioController.instance.morsePlaybackScalar;
+                if(speed.Length == 1) {
+                    speed += ".0";
+                }
+                if(speed.Length >= 3) {
+                    speed = speed.Substring(0, 3);
+                }
+
+                string speedText = "PROCESSING SIGNAL AT " + ("" + speed + "X SPEED");
+
+                mText.text += drawStringWithPadding(Mathf.FloorToInt((float)noDecoWidth / 2f), speedText);
                 mText.text += drawStringWithPadding(Mathf.CeilToInt ((float)noDecoWidth / 2f), readingCurrentTest);
             }
             else if (r == 2) {

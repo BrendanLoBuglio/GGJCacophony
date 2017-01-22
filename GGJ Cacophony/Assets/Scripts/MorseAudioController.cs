@@ -7,7 +7,9 @@ public enum MorsePlaybackState { stopped, playingDot, playingDash, elementBreak,
 [RequireComponent(typeof(AudioSource))]
 public class MorseAudioController : MonoBehaviour
 {
-    [SerializeField] private float dotLength = 0.09f;
+    [SerializeField] private float dotLength = 0.2f;
+    [SerializeField] private float minSpeed = 0.5f;
+    [SerializeField] private float maxSpeed = 2f;
 
 
     public static MorseAudioController _instance;
@@ -26,21 +28,23 @@ public class MorseAudioController : MonoBehaviour
     private string[][] currentMorseMessage;
     private Queue<string[][]> upcomingMorseMessages;
 
-    public int wordIndex    {get; private set;}
-    public int letterIndex  {get; private set;}
-    public int charIndex    {get; private set;}
+    public int wordIndex { get; private set; }
+    public int letterIndex { get; private set; }
+    public int charIndex { get; private set; }
 
+    private bool playing = true;
     private float timer = 0f;
     private bool needElementSeparator = false;
     private bool playingCharacter = false;
     private MorsePlaybackState playbackState = MorsePlaybackState.stopped;
+    public float morsePlaybackScalar { get; private set; }
 
-
-	void Start ()
+    void Start()
     {
         mAudioSource = GetComponent<AudioSource>();
         upcomingMorseMessages = new Queue<string[][]>();
-	}
+        morsePlaybackScalar = 1f;
+    }
 
     public void EnqueueMorseString(string morseStringIn)
     {
@@ -49,7 +53,7 @@ public class MorseAudioController : MonoBehaviour
 
     private void playNextMorseString()
     {
-        if(upcomingMorseMessages.Count >= 1) {
+        if (upcomingMorseMessages.Count >= 1) {
             currentMorseMessage = upcomingMorseMessages.Dequeue();
             resetMorseSequence();
         }
@@ -73,9 +77,34 @@ public class MorseAudioController : MonoBehaviour
             playNextMorseString();
         }
 
+        interpretControlInput();
+        manageMorseStateMachine();
+    }
+
+    private void interpretControlInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Minus)) {
+            IncrementTimescale(false);
+        }
+        if (Input.GetKeyDown(KeyCode.Plus) || Input.GetKeyDown(KeyCode.Equals)) {
+            IncrementTimescale(true);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftBracket)) {
+            //One character back
+        }
+        if (Input.GetKeyDown(KeyCode.RightBracket)) {
+            //One character forward
+        }
+        if (Input.GetKeyDown(KeyCode.Backslash)) {
+            playing = !playing;
+        }
+    }
+
+    private void manageMorseStateMachine()
+    {
         //I hate this:
-        if(currentMorseMessage != null) {
-            timer -= Time.deltaTime;
+        if (currentMorseMessage != null && playing) {
+            timer -= Time.deltaTime * morsePlaybackScalar;
             if (timer <= 0) {
                 if (needElementSeparator) {
                     //Debug.Log("Playing element break at Time " + Time.time);
@@ -95,7 +124,7 @@ public class MorseAudioController : MonoBehaviour
                                 timer = dotLength * 1f;
                                 mAudioSource.Play();
                                 playingCharacter = true;
-                                if(charIndex < currentMorseMessage[wordIndex][letterIndex].Length - 1) {
+                                if (charIndex < currentMorseMessage[wordIndex][letterIndex].Length - 1) {
                                     needElementSeparator = true;
                                 }
                                 break;
@@ -177,6 +206,12 @@ public class MorseAudioController : MonoBehaviour
             output += output;
         }
         return output;
+    }
+
+    public void IncrementTimescale(bool add)
+    {
+        morsePlaybackScalar += add ? 0.1f : -0.1f;
+        morsePlaybackScalar = Mathf.Clamp(morsePlaybackScalar, minSpeed, maxSpeed);
     }
 
     //private IEnumerator playMorseSequence(string morseStringIn)
