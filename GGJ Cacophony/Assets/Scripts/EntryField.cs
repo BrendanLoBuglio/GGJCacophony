@@ -48,7 +48,7 @@ public class EntryField : MonoBehaviour{
         inputField.text = inputField.text.Replace("]", "");
         inputField.text = inputField.text.Replace(@"\", "");
         inputField.text = inputField.text.Replace("-", "");
-        inputField.text = inputField.text.Replace("+", "");
+        inputField.text = inputField.text.Replace("=", "");
     }
 
 }

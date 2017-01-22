@@ -10,15 +10,20 @@ public class CallbackReciever : MonoBehaviour {
         toActivate.active = true;
     }
 
-	public void EnableObject(Room room, string objectName)
+	public void EnableObject(string objectName)
     {
-        EnableObjectStatic(room, objectName);
+        EnableObjectStatic(PlayerState.instance.currentRoom, objectName);
     }
 
     public void AddToState(string stateName)
     {
         PlayerState state = PlayerState.instance;
         state.stateVariables.Add(stateName);
+    }
+
+    public void TeleportToCatArea()
+    {
+        PlayerState.instance.EnterRoom(RoomInstancer.instance.teleportRoom);
     }
 
 

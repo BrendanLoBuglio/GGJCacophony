@@ -32,6 +32,7 @@ public class TextAdventureParser : MonoBehaviour {
                 Help();
                 break;
             case "digest":
+                Digest();
                 break;
             case "pulse":
                 Pulse(splitMessage);

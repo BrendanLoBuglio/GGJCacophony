@@ -12,24 +12,99 @@ public class AudioArray : MonoBehaviour
 	{
 		list = new AudioClip[] {
 			
-			(AudioClip)Resources.Load ("Audio/I Wanna CROMCH"),
+			(AudioClip)Resources.Load ("I Wanna CROMCH"),
 
-			(AudioClip)Resources.Load ("Audio/Morse Tone"),
+			(AudioClip)Resources.Load ("Morse Tone"),
 
-			(AudioClip)Resources.Load ("Audio/Inhale 2"),
+			(AudioClip)Resources.Load ("Inhale 2"),
 
-			(AudioClip)Resources.Load ("Audio/Hamburger Shuffle"),
+			(AudioClip)Resources.Load ("Hamburger Shuffle"),
 
-			(AudioClip)Resources.Load ("Audio/I Ate A Styrofoam Cup For This "),
+			(AudioClip)Resources.Load ("I Ate A Styrofoam Cup For This "),
 
-			(AudioClip)Resources.Load ("Audio/Wind")
+			(AudioClip)Resources.Load ("Wind"),
 
-
-
-
-
+			(AudioClip)Resources.Load ("Rain7")
+		
 		};
-	}
-	
 
+	}
+//	void Update (){
+//		if (Input.GetKeyDown (KeyCode.Q)) {
+//			AudioSource maudio = GetComponent<AudioSource> ();
+//			maudio.PlayOneShot (list[0]);
+//
+//		}
+//		if (Input.GetKeyDown (KeyCode.W)) {
+//			AudioSource maudio = GetComponent<AudioSource> ();
+//			maudio.PlayOneShot (list[1]);
+//		
+//
+//		}
+//		if (Input.GetKeyDown (KeyCode.E)) {
+//			AudioSource maudio = GetComponent<AudioSource> ();
+//			maudio.PlayOneShot (list[2]);
+//
+//		}
+//		if (Input.GetKeyDown (KeyCode.R)) {
+//			AudioSource maudio = GetComponent<AudioSource> ();
+//			maudio.PlayOneShot (list[3]);
+//
+//		}
+//
+//		if (Input.GetKeyDown (KeyCode.T)) {
+//			AudioSource maudio = GetComponent<AudioSource> ();
+//			maudio.PlayOneShot (list[4]);
+//
+//		}
+//
+//		if (Input.GetKeyDown (KeyCode.Y)) {
+//			AudioSource maudio = GetComponent<AudioSource> ();
+//			maudio.PlayOneShot (list[5]);
+//
+//		}
+//
+//		if (Input.GetKeyDown (KeyCode.U)) {
+//			AudioSource maudio = GetComponent<AudioSource> ();
+//			maudio.PlayOneShot (list[6]);
+//
+//		}
+//
+//	}
+
+	public void PlayCromch(){
+		AudioSource maudio = GetComponent<AudioSource> ();
+		maudio.PlayOneShot (list[0]);
+
+	}
+
+	public void PlayMorseTone(){
+		AudioSource maudio = GetComponent<AudioSource> ();
+		maudio.PlayOneShot (list [1]);
+	}
+
+	public void PlayInhale(){
+		AudioSource maudio = GetComponent<AudioSource> ();
+		maudio.PlayOneShot (list [2]);
+	}
+
+	public void PlayTrashRifling(){
+		AudioSource maudio = GetComponent<AudioSource> ();
+		maudio.PlayOneShot (list [3]);
+	}
+
+	public void PlayStyrofoamCrunch(){
+		AudioSource maudio = GetComponent<AudioSource> ();
+		maudio.PlayOneShot (list [4]);
+	}
+
+	public void PlaySpookyBG(){
+		AudioSource maudio = GetComponent<AudioSource> ();
+		maudio.PlayOneShot (list [5]);
+	}
+
+	public void PlayRain(){
+		AudioSource maudio = GetComponent<AudioSource> ();
+		maudio.PlayOneShot (list [6]);
+	}
 }
