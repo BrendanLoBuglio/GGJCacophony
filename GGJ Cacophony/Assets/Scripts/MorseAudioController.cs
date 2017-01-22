@@ -73,10 +73,6 @@ public class MorseAudioController : MonoBehaviour
             EnqueueMorseString("This is the test string");
         }
 
-        if (Input.GetKeyDown(KeyCode.S)) {
-            playNextMorseString();
-        }
-
         interpretControlInput();
         manageMorseStateMachine();
     }
@@ -97,6 +93,9 @@ public class MorseAudioController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Backslash)) {
             playing = !playing;
+        }
+        if (Input.GetKeyDown(KeyCode.Tab)) {
+            playNextMorseString();
         }
     }
 
@@ -172,6 +171,13 @@ public class MorseAudioController : MonoBehaviour
         }
     }
 
+
+    public void IncrementTimescale(bool add)
+    {
+        morsePlaybackScalar += add ? 0.1f : -0.1f;
+        morsePlaybackScalar = Mathf.Clamp(morsePlaybackScalar, minSpeed, maxSpeed);
+    }
+
     public string GetPlaybackStateString(float minWidth, out int currentLetterIndex)
     {
         currentLetterIndex = 0;
@@ -208,36 +214,13 @@ public class MorseAudioController : MonoBehaviour
         return output;
     }
 
-    public void IncrementTimescale(bool add)
+    public bool HasMessage()
     {
-        morsePlaybackScalar += add ? 0.1f : -0.1f;
-        morsePlaybackScalar = Mathf.Clamp(morsePlaybackScalar, minSpeed, maxSpeed);
+        return currentMorseMessage == null;
     }
 
-    //private IEnumerator playMorseSequence(string morseStringIn)
-    //{
-    //    Debug.Log("Interpretting Morse " + morseStringIn);
-    //
-    //    for (int i = 0; i < morseStringIn.Length; i++) {
-    //        char morseChar = morseStringIn[i];
-    //        switch (morseChar) {
-    //            case '.':
-    //                mAudioSource.Play();
-    //                yield return new WaitForSeconds(dotLength);
-    //                mAudioSource.Stop();
-    //                yield return new WaitForSeconds(dotLength);
-    //                break;
-    //            case '-':
-    //                mAudioSource.Play();
-    //                yield return new WaitForSeconds(dotLength * 3);
-    //                mAudioSource.Stop();
-    //                yield return new WaitForSeconds(dotLength);
-    //                break;
-    //            case ' ':
-    //                mAudioSource.Stop();
-    //                yield return new WaitForSeconds(dotLength);
-    //                break;
-    //        }
-    //    }
-    //}
+    public int GetQueuedMessageCount()
+    {
+        return upcomingMorseMessages.Count;
+    }
 }

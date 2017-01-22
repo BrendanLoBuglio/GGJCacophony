@@ -51,8 +51,24 @@ public class MorseDisplayConsole : MonoBehaviour
 
                 string speedText = "PROCESSING SIGNAL AT " + ("" + speed + "X SPEED");
 
+
+                string playbackMessage = "";
+                if (MorseAudioController.instance.HasMessage() && MorseAudioController.instance.GetQueuedMessageCount() == 0) {
+                    playbackMessage = "NO MESSAGES";
+                }
+                else {
+                    int count = MorseAudioController.instance.GetQueuedMessageCount();
+                    if (count == 0) {
+                        playbackMessage = "READING CURRENT MESSAGE";
+                    }
+                    else {
+                        playbackMessage = count + " MESSAGES BEHIND CURRENT";
+                    }
+                }
+
+
                 mText.text += drawStringWithPadding(Mathf.FloorToInt((float)noDecoWidth / 2f), speedText);
-                mText.text += drawStringWithPadding(Mathf.CeilToInt ((float)noDecoWidth / 2f), readingCurrentTest);
+                mText.text += drawStringWithPadding(Mathf.CeilToInt ((float)noDecoWidth / 2f), playbackMessage);
             }
             else if (r == 2) {
                 mText.text += drawStringWithPadding(Mathf.FloorToInt((float)noDecoWidth / 2f), "");
