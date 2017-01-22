@@ -11,19 +11,20 @@ public class MorseDisplayConsole : MonoBehaviour
     private const int displayRows = 6;
     private const int readingHeadOffset = 10;
     private const string borderDeco = "# ";
+    private const float newMessageBlinkRate = 1.25f;
 
     private void Start ()
     {
         mText = GetComponent<Text>();
-        drawBorders();
+        drawConsole();
 	}
 
     private void Update()
     {
-        drawBorders();
+        drawConsole();
     }
 
-    private void drawBorders ()
+    private void drawConsole ()
     {
         int textAreaWidth = TextLog.instance.GetLineWidthOfTextField();
         int noDecoWidth = getNoDecoWidth(textAreaWidth);
@@ -71,7 +72,11 @@ public class MorseDisplayConsole : MonoBehaviour
             else if (r == 2) {
                 mText.text += drawStringWithPadding(Mathf.FloorToInt((float)noDecoWidth / 2f), "");
 
-                string pressTabText = MorseAudioController.instance.GetQueuedMessageCount() == 0 ? "" : "PRESS <TAB> TO ACCEPT NEW MESSAGE";
+                string pressTabText = "";
+                //Blink Effect
+                if (Time.time % newMessageBlinkRate > newMessageBlinkRate / 2f) {
+                    pressTabText = MorseAudioController.instance.GetQueuedMessageCount() == 0 ? "" : "PRESS <TAB> TO ACCEPT NEW MESSAGE";
+                }
                 mText.text += drawStringWithPadding(Mathf.CeilToInt((float)noDecoWidth / 2f), pressTabText);
             }
             else if (r == 3) {
