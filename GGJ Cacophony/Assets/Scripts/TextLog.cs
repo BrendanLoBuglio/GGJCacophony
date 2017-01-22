@@ -26,7 +26,7 @@ public class TextLog : MonoBehaviour {
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         mRectTransform = this.GetComponent<RectTransform>();
     }
@@ -96,7 +96,7 @@ public class TextLog : MonoBehaviour {
         }
     }
 
-    private int getLineWidthOfTextField()
+    public int GetLineWidthOfTextField()
     {
         string testString = "";
         for (int i = 0; i < 1000; i++) {
