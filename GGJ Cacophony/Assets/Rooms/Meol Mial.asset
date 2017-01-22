@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce57d858bdec0d48920109d03480bfd, type: 3}
+  m_Name: Meol Mial
+  m_EditorClassIdentifier: 
+  description: 'Never was there a place more wretched than Meol Mial, village at the
+    foot of the Felurri Palace. You pad through the streets, and attract the green
+    eyes of the Felurri wherever you go, for no longer are there towering mounds of
+    garbage to obfuscate your passage. The whole forsaken place has been licked clean,
+    and to pass unnoticed here you must find costume rather than camouflage. '
+  objects:
+  - name: 
+    inspectionDescription: 
+    validActions:
+    - actionName: 
+      events: []
+    active: 1
+  connections:
+  - direction: 0
+    destinationRoom: {fileID: 11400000, guid: dccf8c48db2467c43ac4aa16840e79d6, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  - direction: 2
+    destinationRoom: {fileID: 11400000, guid: 12c330018e99a294982bb60bf3aa875b, type: 2}
+    requirements:
+    - WearingSkin
+    inactiveExplanation: The guards look at you warily.
+  realRoom: 1

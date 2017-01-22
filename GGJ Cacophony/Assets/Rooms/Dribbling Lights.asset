@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce57d858bdec0d48920109d03480bfd, type: 3}
+  m_Name: Dribbling Lights
+  m_EditorClassIdentifier: 
+  description: The only Felurri in the Labyrinth of Trash gather beneath the glow
+    of the Dribbling Lights. Here are the mangy, the balding, the three-legged and
+    the bent-whiskered. Even at this pitiful juncture, among the most pitiable of
+    people, they hold themselves with the arrogance of their kind. They whisper as
+    you pass, and though you do not listen, you cannot help but hear.
+  objects: []
+  connections:
+  - direction: 0
+    destinationRoom: {fileID: 11400000, guid: 5a67b1045a3150d45a0738561ba41ac3, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  - direction: 1
+    destinationRoom: {fileID: 11400000, guid: 52142dd830f22f54a810c28747ab4afa, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  - direction: 2
+    destinationRoom: {fileID: 11400000, guid: e0d183ee5c8480049ad03d53c5e1c3a2, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  - direction: 3
+    destinationRoom: {fileID: 11400000, guid: eec2acf928d759d42a846daed6b730d0, type: 2}
+    requirements:
+    - asdfasdf
+    inactiveExplanation: "West are the barren baronies, where the Nil\u2019Vermi still
+      rule. They still have the gall to look down upon your kind, now at the end of
+      all things. You should leave them be. "
+  realRoom: 1

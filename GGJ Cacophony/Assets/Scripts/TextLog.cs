@@ -88,6 +88,7 @@ public class TextLog : MonoBehaviour {
         lastGennedTextLine.text = textIn.Substring(0, lineWidth);
         lastGennedTextLine.transform.SetParent(transform);
         lastGennedTextLine.transform.SetSiblingIndex(lastGennedTextLine.transform.GetSiblingIndex() - 1);
+        lastGennedTextLine.transform.localPosition = new Vector3(lastGennedTextLine.transform.localPosition.x, lastGennedTextLine.transform.localPosition.y, 0);
         lastGennedTextLine.rectTransform.sizeDelta = mRectTransform.sizeDelta;
         lastGennedTextLine.transform.localScale = textLinePrefab.transform.localScale;
 

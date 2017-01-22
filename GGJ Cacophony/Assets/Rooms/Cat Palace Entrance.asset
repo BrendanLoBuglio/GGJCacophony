@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce57d858bdec0d48920109d03480bfd, type: 3}
+  m_Name: Cat Palace Entrance
+  m_EditorClassIdentifier: 
+  description: "You saunter toward the palace gates, with all the arrogance and haughty
+    poise of one of the firstborn. The Felurri on guard, a tabby tom, perks up. \u201CAy!\u201D
+    he says. \u201CAy L\u2019mayo!\u201D You duck your head, but you cannot look too
+    far away lest you reveal the rip in your skin suit. The guard rises, and steps
+    in your path before you can slip past. \u201CYou know I cannot permit you entrance
+    until you give the passphrase.\u201D"
+  objects:
+  - name: "guard \u201Cfourwordsalluppercase\u201D;guard fourwordsalluppercase"
+    inspectionDescription: 
+    validActions:
+    - actionName: tell
+      events:
+      - actionDescription: "\u201CONE WORD ALL LOWERCASE,\u201D replies the guard,
+          and he bows his head as you pass. Gilt doors of ponderous weight creak open
+          as you enter the palace of the Sovereign Radiance, the Majesty Unfathomable,
+          He for Which There is No Vanity, Claw of Night, Marshal of the Order of
+          the Shattered Glass, Ruler of the Felurri and All Who Cross Gold-Marked
+          Lands, King Moar Chezbur al-Pusai. You are so close to your goal."
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 114692780015651348, guid: 18fcdda13004c34418329630055f7d29,
+                type: 2}
+              m_MethodName: AddToState
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: GuardConvinced
+                m_BoolArgument: 0
+              m_CallState: 2
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    active: 1
+  connections:
+  - direction: 3
+    destinationRoom: {fileID: 11400000, guid: dea8d27edbf684f4183eed812334636e, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  - direction: 2
+    destinationRoom: {fileID: 11400000, guid: 9764f2da69c33b64d8332d8877c8acdf, type: 2}
+    requirements:
+    - GuardConvinced
+    inactiveExplanation: A guard stands watch before the palace gates. He will refuse
+      a Marsu without a word; you must approach him as his own kind.
+  realRoom: 1
