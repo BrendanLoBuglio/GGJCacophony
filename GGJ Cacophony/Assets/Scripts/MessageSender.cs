@@ -39,7 +39,7 @@ public class MessageSender : NetworkBehaviour {
     {
         if (isTextPlayer)
         {
-            morsePlayer.PlayMorseString(message);
+            morsePlayer.EnqueueMorseString(message);
         }
     }
 
@@ -48,7 +48,7 @@ public class MessageSender : NetworkBehaviour {
     {
         if (isWikiPlayer)
         {
-            morsePlayer.PlayMorseString(message);
+            morsePlayer.EnqueueMorseString(message);
         }
     }
 

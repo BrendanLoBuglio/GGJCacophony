@@ -178,40 +178,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &584840630
+--- !u!1 &751011676
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 584840632}
-  - component: {fileID: 584840631}
-  - component: {fileID: 584840633}
+  - component: {fileID: 751011678}
+  - component: {fileID: 751011677}
+  - component: {fileID: 751011679}
   m_Layer: 0
-  m_Name: CueAudio
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &584840631
+--- !u!114 &751011677
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 584840630}
+  m_GameObject: {fileID: 751011676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 587e6010723874755a4c8b5847ace21e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8639c497d712c46f5a5e87cceab8940f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &584840632
+  list: []
+--- !u!4 &751011678
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 584840630}
+  m_GameObject: {fileID: 751011676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -219,18 +220,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &584840633
+--- !u!82 &751011679
 AudioSource:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 584840630}
+  m_GameObject: {fileID: 751011676}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300001, guid: b36b30df5c1e34a26a5cb4edf1574351,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: cdb200623fbbc4e1599ffcfb98a3fe0e, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

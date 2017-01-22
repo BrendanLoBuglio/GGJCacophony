@@ -7,17 +7,10 @@ public static class MorseUtility
 {
     public const int spaceBetweenLetters    = 5;
     public const int spaceBetweenWords      = 11;
+    public const int spaceBetweenMessages   = 30;
 
     public static string GenerateMorseSentence(string input)
     {
-        char[] arr = input.Where(c => (c == '.' || c == ' ' || c == '-')).ToArray();
-        string morseOnlyInput = new string(arr);
-        Debug.Log("Input is " + input + ", while morseOnlyInput is " + morseOnlyInput);
-        if(input == morseOnlyInput) {
-
-        }
-
-
         string output = "";
         for (int i = 0; i < input.Length; i++) {
             output += GetMorseLetter(input[i]);
@@ -97,4 +90,16 @@ public static class MorseUtility
         return output;
     }
 
+    public static string[][] GetMorseWordLetters(string morseStringIn)
+    {
+        string[][] output;
+        string[] words = morseStringIn.Split(new string[] { MorseUtility.GetMorseSpace() }, System.StringSplitOptions.RemoveEmptyEntries);
+        output = new string[words.Length][];
+
+        for (int i = 0; i < output.Length; i++) {
+            output[i] = words[i].Split(new string[] { MorseUtility.GetMorseLetterSeperator() }, System.StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        return output;
+    }
 }

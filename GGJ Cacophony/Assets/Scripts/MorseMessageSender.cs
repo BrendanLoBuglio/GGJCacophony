@@ -18,6 +18,6 @@ public class MorseMessageSender : MonoBehaviour
     public void PushMorseString()
     {
         string convertedMorse = MorseUtility.GenerateMorseSentence(textField.text);
-        morseController.PlayMorseString(convertedMorse);
+        morseController.EnqueueMorseString(convertedMorse);
     }
 }
