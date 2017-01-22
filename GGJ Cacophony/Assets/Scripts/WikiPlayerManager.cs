@@ -20,9 +20,9 @@ public class WikiPlayerManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Return) && !string.IsNullOrEmpty(mInputField.text)) {
             mEntryField.SendTextMessage();
-            mEntryField.Reset();
             mTextLog.AddTextLine(message);
             mMorseDisplayConsole.Show();
+            mEntryField.Reset();
         }
     }
 }

@@ -15,6 +15,11 @@ public class EntryField : MonoBehaviour{
 
     void Update()
     {
+
+        if (inputField.wasCanceled) {
+            inputField.ActivateInputField();
+            inputField.text = "";
+        }
         if (inputField.interactable) {
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(inputField.gameObject);
         }

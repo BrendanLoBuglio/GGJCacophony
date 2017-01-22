@@ -231,7 +231,7 @@ Prefab:
     - target: {fileID: 114161752823080738, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: reset
+      value: Reset
       objectReference: {fileID: 0}
     - target: {fileID: 114161752823080738, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
