@@ -19,8 +19,8 @@ public class PlayerState : MonoBehaviour {
 
     public Room[] allRooms;
     public Room currentRoom;
-    public HashSet<string> stateVariables = new HashSet<string>();
-    public HashSet<string> allVerbs = new HashSet<string>();
+    public List<string> stateVariables = new List<string>();
+    public List<string> allVerbs = new List<string>();
 
     void Start()
     {
@@ -33,7 +33,7 @@ public class PlayerState : MonoBehaviour {
                     string[] validVerbs = verb.actionName.Split(';');
                     for(int k=0; k < validVerbs.Length; k++)
                     {
-                        if (!allVerbs.Contains(validVerbs[k]))
+                        if (!allVerbs.Contains(validVerbs[k].ToLower()))
                         {
                             allVerbs.Add(validVerbs[k].ToLower());
                         }
@@ -47,18 +47,18 @@ public class PlayerState : MonoBehaviour {
     {
         currentRoom = room;
         TextLog.AddTextLineToTextLog(currentRoom.name + " - ");
-        TextLog.AddTextLineToTextLog(currentRoom.description, false);
+        TextLog.AddTextLineToTextLog(currentRoom.description);
         for(int k=0; k < currentRoom.connections.Length; k++)
         {
             RoomConnection conn = currentRoom.connections[k];
             if (conn.active)
             {
-                TextLog.AddTextLineToTextLog("To the " + conn.direction.ToString() + " is the " + conn.destinationRoom.name);
+                TextLog.AddTextLineToTextLog("To the " + conn.direction.ToString() + " is the " + conn.destinationRoom.name,false);
             }
             else
             {
-                TextLog.AddTextLineToTextLog("To the " + conn.direction.ToString() + " is the " + conn.destinationRoom.name);
-                TextLog.AddTextLineToTextLog(conn.inactiveExplanation);
+                TextLog.AddTextLineToTextLog("To the " + conn.direction.ToString() + " is the " + conn.destinationRoom.name,false);
+                TextLog.AddTextLineToTextLog(conn.inactiveExplanation,false);
             }
         }
         TextLog.AddWhiteSpace();

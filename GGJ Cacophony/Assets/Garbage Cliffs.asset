@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce57d858bdec0d48920109d03480bfd, type: 3}
+  m_Name: Garbage Cliffs
+  m_EditorClassIdentifier: 
+  description: "The Garbage Cliffs loom over you, ripening in the midday sun. A one-eyed
+    Krobi lands before you, its beak held at an imperious angle. \u201CHave your pickings
+    from the foot of our lands,\u201D he declares, \u201Cbut seek you not the territories
+    beyond. Such is the will of Moar Chezbur al-Pusai, him of golden fur and ebon
+    claw! Such is the will of the Felurri King!\u201D Your scar throbs at the name.
+    This is the one you must seek.\r\n\r\nAround you there are stinking heaps of midden,
+    infested with infant Dromii. Clear spheres of light unwavering, although the everlasting
+    fires were long ago extinguished. Here, the ancient tools of the kitchens that
+    overflowed: knives of rusted steel, a batter for flour and sweets, the shakers
+    of the salts. There, soft thrones, musty with the ages: long, short, wood and
+    fabric all. Krobi have nests in every nook. Their beady eyes glint as you examine
+    their hoard."
+  objects:
+  - name: batter
+    inspectionDescription: 
+    validActions:
+    - actionName: eat;chew;bite;swallow;ingest
+      events:
+      - actionDescription: You swallow the batter. It scratches your throat going
+          down.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 114692780015651348, guid: 18fcdda13004c34418329630055f7d29,
+                type: 2}
+              m_MethodName: AddToState
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: AteBatter
+                m_BoolArgument: 0
+              m_CallState: 2
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+      - actionDescription: The batter is already in your gut.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    active: 1
+  - name: lightbulb
+    inspectionDescription: 
+    validActions:
+    - actionName: eat;chew;bite;swallow;ingest
+      events:
+      - actionDescription: You swallow a sphere of light unwavering. It settles comfortably
+          in your gut.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+      - actionDescription: The sphere of light rolls in your gut.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 114692780015651348, guid: 18fcdda13004c34418329630055f7d29,
+                type: 2}
+              m_MethodName: AddToState
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: AteLightbulb
+                m_BoolArgument: 0
+              m_CallState: 2
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    active: 1
+  - name: crows
+    inspectionDescription: 
+    validActions:
+    - actionName: tell
+      events:
+      - actionDescription: Once you notify the other Krobi, they are swift in the
+          burial. You cannot fault them for disloyalty, at least. They overturn the
+          sewage-steeped earth with beak and talon, and bury Caw-Cawraw-CAW with much
+          respect if little ceremony. The iron tankard they unearthed in making the
+          grave they leave at the foot of the cliffs, uninspected and unremarked upon.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 114692780015651348, guid: 18fcdda13004c34418329630055f7d29,
+                type: 2}
+              m_MethodName: EnableObject
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: helium tank
+                m_BoolArgument: 0
+              m_CallState: 2
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+      - actionDescription: They already know what you did.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    active: 0
+  - name: helium tank
+    inspectionDescription: 
+    validActions:
+    - actionName: inhale;breathe
+      events:
+      - actionDescription: "With nimble paws, you turn the valve of the once-buried
+          tank and clamp your teeth around the spout. As your stomach swells with
+          the ethereal gas, you are imbued with such airiness that you begin to ascend,
+          buoyed by a fortunate wind. You hold your breath as you float past the Cliffs,
+          bloated on that curious substance \u201Chelium,\u201D and even the Krobi
+          cannot keep pace with you. When at last you are forced to exhale, you have
+          already flown past Sneekachik, capital of the Roden, and that hive of villainy
+          Xor\u2019xr\u2019xak. You land at the village of Meol Mial, emboldened.\r\n"
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 114692780015651348, guid: 18fcdda13004c34418329630055f7d29,
+                type: 2}
+              m_MethodName: TeleportToCatArea
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: helium tank
+                m_BoolArgument: 0
+              m_CallState: 2
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    active: 0
+  connections:
+  - direction: 2
+    destinationRoom: {fileID: 11400000, guid: 0ca76e72003285d4fa9f4442dac530f8, type: 2}
+    active: 1
+    inactiveExplanation: 

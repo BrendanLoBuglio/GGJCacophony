@@ -26,7 +26,7 @@ public class TextLog : MonoBehaviour {
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         mRectTransform = this.GetComponent<RectTransform>();
     }
@@ -44,12 +44,13 @@ public class TextLog : MonoBehaviour {
 
 	public void AddTextLine(string line, bool addSpace = true)
     {
+
+        printQueue.Enqueue(line);
         // print a line for space
         if (addSpace)
         {
-            printQueue.Enqueue("");    
+            printQueue.Enqueue("");
         }
-        printQueue.Enqueue(line);
         if (printCoroutine == null)
         {
             printCoroutine = StartCoroutine(RecursivelyPrintLines());
@@ -96,7 +97,7 @@ public class TextLog : MonoBehaviour {
         }
     }
 
-    private int getLineWidthOfTextField()
+    public int GetLineWidthOfTextField()
     {
         string testString = "";
         for (int i = 0; i < 1000; i++) {
