@@ -21,7 +21,10 @@ public class TextAdventureParser : MonoBehaviour {
             StartGame();
             return;
         }
-        TextLog.instance.AddTextLine(message);
+        if (message.Replace(" ", "") != "")
+        {
+            TextLog.instance.AddTextLine(message);
+        }
         message = message.ToLower();
         string[] splitMessage = message.Split(' ');
         switch (splitMessage[0])

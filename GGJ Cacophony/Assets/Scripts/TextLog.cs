@@ -37,6 +37,11 @@ public class TextLog : MonoBehaviour {
         instance.AddTextLine(line, addSpace);
     }
 
+    public static void AddWhiteSpace()
+    {
+        instance.AddTextLine("", false);
+    }
+
 	public void AddTextLine(string line, bool addSpace = true)
     {
         // print a line for space
