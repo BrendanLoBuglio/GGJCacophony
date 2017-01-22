@@ -1551,6 +1551,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 52142dd830f22f54a810c28747ab4afa, type: 2}
   - {fileID: 11400000, guid: c2a01c49b04e262459fc93f68fd51977, type: 2}
   - {fileID: 11400000, guid: e0d183ee5c8480049ad03d53c5e1c3a2, type: 2}
+  - {fileID: 11400000, guid: c9dae141de7693144a29d466f77f715d, type: 2}
   currentRoom: {fileID: 0}
   stateVariables: []
   allVerbs: []
@@ -1578,7 +1579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65bcd7d3505e51348b9613ce1d0e5195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startRoom: {fileID: 11400000, guid: 47fcf68ec7d4a4f45b7adef093b9276a, type: 2}
+  startRoom: {fileID: 11400000, guid: c9dae141de7693144a29d466f77f715d, type: 2}
   teleportRoom: {fileID: 11400000, guid: dea8d27edbf684f4183eed812334636e, type: 2}
 --- !u!114 &1703171181
 MonoBehaviour:
