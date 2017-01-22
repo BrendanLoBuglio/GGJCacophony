@@ -48,6 +48,7 @@ public class RoomConnection
     public Direction direction;
     public Room destinationRoom;
     public bool active = true;
+    public string inactiveExplanation;
 }
 
 public enum Direction

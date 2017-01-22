@@ -6,13 +6,24 @@ using UnityEngine.UI;
 
 public class EntryField : MonoBehaviour{
 
-    InputField inputField;
-    private string prevTextState = "";
+    public static InputField inputField;
 
 	// Use this for initialization
 	void Start () {
         inputField = GetComponent<InputField>();
-	}
+    }
+
+    void Update()
+    {
+        if (inputField.interactable)
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(inputField.gameObject);
+        }
+        else
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        }
+    }
 
     public void SendTextMessage()
     {

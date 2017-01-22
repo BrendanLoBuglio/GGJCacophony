@@ -48,7 +48,19 @@ public class PlayerState : MonoBehaviour {
         currentRoom = room;
         TextLog.AddTextLineToTextLog(currentRoom.name + " - ");
         TextLog.AddTextLineToTextLog(currentRoom.description, false);
-
+        for(int k=0; k < currentRoom.connections.Length; k++)
+        {
+            RoomConnection conn = currentRoom.connections[k];
+            if (conn.active)
+            {
+                TextLog.AddTextLineToTextLog("To the " + conn.direction.ToString() + " is the " + conn.destinationRoom.name);
+            }
+            else
+            {
+                TextLog.AddTextLineToTextLog("To the " + conn.direction.ToString() + " is the " + conn.destinationRoom.name);
+                TextLog.AddTextLineToTextLog(conn.inactiveExplanation);
+            }
+        }
     }
 
 }

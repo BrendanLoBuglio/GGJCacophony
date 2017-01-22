@@ -8,6 +8,8 @@ public class TextLog : MonoBehaviour {
     public GameObject textLinePrefab;
     public float waitTimeBetweenLines = .5f;
     private Color col;
+    Coroutine printingLinesCoroutine;
+    Queue<string> textQueue = new Queue<string>();
 
     public static TextLog _instance;
     public static TextLog instance {
@@ -30,14 +32,20 @@ public class TextLog : MonoBehaviour {
         // print a line for space
         if (addSpace)
         {
-            PrintLine("");
+            textQueue.Enqueue("Empty");
         }
-        StartCoroutine(RecursivelyPrintLines(line));
+        textQueue.Enqueue(line);
+        if(printingLinesCoroutine == null)
+        {
+            printingLinesCoroutine = StartCoroutine(RecursivelyPrintLines());
+        }
         
     }
 
     private string PrintLine(string line)
     {
+        string toReturn = "";
+        if (line == "Empty") { line = ""; toReturn = "Empty"; }
         GameObject  spawnedLine = (GameObject)Instantiate(textLinePrefab, Vector2.zero, Quaternion.identity);
         Text text = spawnedLine.GetComponent<Text>();
         text.text = line;
@@ -53,28 +61,45 @@ public class TextLog : MonoBehaviour {
             var uiLines = text.cachedTextGenerator.lines;
             string currentLine = line.Substring(0, uiLines[1].startCharIdx);
             text.text = currentLine;
+            Canvas.ForceUpdateCanvases();
             StartCoroutine(addWhiteSpace(text));
             return line.Substring(uiLines[1].startCharIdx);
         }
         else {
             StartCoroutine(addWhiteSpace(text));
-            return "";
+            return toReturn;
         }
     }
 
     IEnumerator addWhiteSpace(Text text) {
         yield return null;
         text.text += " ";
+        Canvas.ForceUpdateCanvases();
     }
 
-    IEnumerator RecursivelyPrintLines(string message)
+    IEnumerator RecursivelyPrintLines()
     {
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        EntryField.inputField.interactable = false;
+        EntryField.inputField.DeactivateInputField();
+        string message = textQueue.Dequeue();
         message = PrintLine(message);
-        while(message.Length > 0)
+        while(message.Length > 0 || textQueue.Count != 0)
         {
-            yield return new WaitForSeconds(waitTimeBetweenLines);
+            if (message != "Empty")
+            {
+                yield return new WaitForSeconds(waitTimeBetweenLines);
+            }
+            if(message == "Empty" || message.Length == 0)
+            {
+                message = textQueue.Dequeue();
+            }
             message = PrintLine(message);
         }
+        printingLinesCoroutine = null;
+        EntryField.inputField.ActivateInputField();
+        EntryField.inputField.interactable = true;
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(EntryField.inputField.gameObject);
     }
 
 }

@@ -57,7 +57,6 @@ public class TextAdventureParser : MonoBehaviour {
                 TextLog.instance.AddTextLine("No");
                 break;
             case "":
-                TextLog.AddTextLineToTextLog("");
                 break;
             default:
                 if (ValidateActionInput(splitMessage))
