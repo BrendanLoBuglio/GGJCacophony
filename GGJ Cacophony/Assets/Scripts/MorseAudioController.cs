@@ -52,7 +52,12 @@ public class MorseAudioController : MonoBehaviour
 
     public void EnqueueMorseString(string morseStringIn)
     {
-        upcomingMorseMessages.Enqueue(MorseUtility.GetMorseWordLetters(MorseUtility.GenerateMorseSentence(morseStringIn)));
+        string[][] morseLetters = MorseUtility.GetMorseWordLetters(MorseUtility.GenerateMorseSentence(morseStringIn));
+        string morseSentence = MorseUtility.GenerateMorseSentence(morseStringIn);
+        if (!string.IsNullOrEmpty(morseSentence)){
+            upcomingMorseMessages.Enqueue(morseLetters);
+        }
+        
     }
 
     private void playNextMorseString()

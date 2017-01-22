@@ -43,7 +43,7 @@ public class ScanLines : MonoBehaviour
             material.SetFloat("_Distortion", Distortion);
             material.SetFloat("_InputGamma", InputGamma);
             material.SetFloat("_OutputGamma", OutputGamma);
-            material.SetVector("_TextureSize", new Vector2(512.0f, 512.0f));
+            material.SetVector("_TextureSize", new Vector2(256, 256));
             Graphics.Blit(sourceTexture, destTexture, material);
         }
         else

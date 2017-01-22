@@ -155,33 +155,35 @@ public class TextAdventureParser : MonoBehaviour {
         {
             TextLog.AddTextLineToTextLog("Your empty belly rumbles");
         }
-
-        string thingsInStomach = "In your stomach the ";
-        for(int k=0; k < state.eatenThings.Count; k++)
+        if (state.eatenThings.Count > 0)
         {
-            if(k > 0 && state.eatenThings.Count >2)
+            string thingsInStomach = "In your stomach the ";
+            for (int k = 0; k < state.eatenThings.Count; k++)
             {
-                thingsInStomach += ", ";
+                if (k > 0 && state.eatenThings.Count > 2)
+                {
+                    thingsInStomach += ", ";
+                }
+                else
+                {
+                    thingsInStomach += " ";
+                }
+                if (k == state.eatenThings.Count - 1 && state.eatenThings.Count > 1)
+                {
+                    thingsInStomach += "and ";
+                }
+                thingsInStomach += state.eatenThings[k];
+            }
+            if (state.eatenThings.Count == 1)
+            {
+                thingsInStomach += " tumbles around.";
             }
             else
             {
-                thingsInStomach += " ";
+                thingsInStomach += " tumble around.";
             }
-            if (k == state.eatenThings.Count-1 && state.eatenThings.Count > 1)
-            {
-                thingsInStomach += "and ";
-            }
-            thingsInStomach += state.eatenThings[k];
+            TextLog.AddTextLineToTextLog(thingsInStomach, false);
         }
-        if (state.eatenThings.Count == 1)
-        {
-            thingsInStomach += " tumbles around.";
-        }
-        else
-        {
-            thingsInStomach += " tumble around.";
-        }
-        TextLog.AddTextLineToTextLog(thingsInStomach, false);
 
         if (ateLightbulb && ateBatter)
         {

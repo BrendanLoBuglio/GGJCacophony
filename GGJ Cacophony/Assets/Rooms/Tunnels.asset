@@ -21,7 +21,7 @@ MonoBehaviour:
   - name: 487;lock 487
     inspectionDescription: 
     validActions:
-    - actionName: dial;enter;unlock
+    - actionName: enter;dial;unlock;open
       events:
       - actionDescription: The lock falls away, and the path opens. North and up,
           the Labyrinth of Trash lies.
@@ -53,24 +53,10 @@ MonoBehaviour:
   - name: lock
     inspectionDescription: An iron padlock, heavy with rust.
     validActions:
-    - actionName: unlock
+    - actionName: unlock;open
       events:
       - actionDescription: You try random combinations with no success. You need the
           combination.
-        actionCallback:
-          m_PersistentCalls:
-            m_Calls: []
-          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-      - actionDescription: The lock has already been opened.
-        actionCallback:
-          m_PersistentCalls:
-            m_Calls: []
-          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-    - actionName: bite;hit;smack;
-      events:
-      - actionDescription: 'Although rusted, the lock holds. '
         actionCallback:
           m_PersistentCalls:
             m_Calls: []
