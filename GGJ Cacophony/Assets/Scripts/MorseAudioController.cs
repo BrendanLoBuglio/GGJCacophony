@@ -137,7 +137,7 @@ public class MorseAudioController : MonoBehaviour
                         }
                     }
 
-                    //Debug.Log("The current letter is \"" + currentMorseMessage[wordIndex][letterIndex] + "\"");
+                    Debug.Log("The current letter is \"" + currentMorseMessage[wordIndex][letterIndex] + "\"");
                 }
             }
         }

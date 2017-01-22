@@ -93,11 +93,11 @@ public static class MorseUtility
     public static string[][] GetMorseWordLetters(string morseStringIn)
     {
         string[][] output;
-        string[] words = morseStringIn.Split(new string[] { MorseUtility.GetMorseSpace() }, System.StringSplitOptions.None);
+        string[] words = morseStringIn.Split(new string[] { MorseUtility.GetMorseSpace() }, System.StringSplitOptions.RemoveEmptyEntries);
         output = new string[words.Length][];
 
         for (int i = 0; i < output.Length; i++) {
-            output[i] = words[i].Split(new string[] { MorseUtility.GetMorseLetterSeperator() }, System.StringSplitOptions.None);
+            output[i] = words[i].Split(new string[] { MorseUtility.GetMorseLetterSeperator() }, System.StringSplitOptions.RemoveEmptyEntries);
         }
 
         return output;
