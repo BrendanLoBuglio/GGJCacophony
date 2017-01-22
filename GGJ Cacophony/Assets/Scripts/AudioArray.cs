@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class AudioArray : MonoBehaviour
 {
-
+	private AudioSource maudio;
 	public AudioClip[] list;
 
 	// Use this for initialization
 	void Start ()
 	{
+		maudio = GetComponent<AudioSource> ();
+			
 		list = new AudioClip[] {
 			
 			(AudioClip)Resources.Load ("I Wanna CROMCH"),
@@ -24,7 +26,11 @@ public class AudioArray : MonoBehaviour
 
 			(AudioClip)Resources.Load ("Wind"),
 
-			(AudioClip)Resources.Load ("Rain7")
+			(AudioClip)Resources.Load ("Rain7"),
+
+			(AudioClip)Resources.Load ("Wet Meat Noises"),
+
+			(AudioClip)Resources.Load ("Crow cawing sound effect")
 		
 		};
 
@@ -73,38 +79,41 @@ public class AudioArray : MonoBehaviour
 //	}
 
 	public void PlayCromch(){
-		AudioSource maudio = GetComponent<AudioSource> ();
 		maudio.PlayOneShot (list[0]);
 
 	}
 
 	public void PlayMorseTone(){
-		AudioSource maudio = GetComponent<AudioSource> ();
 		maudio.PlayOneShot (list [1]);
 	}
 
 	public void PlayInhale(){
-		AudioSource maudio = GetComponent<AudioSource> ();
 		maudio.PlayOneShot (list [2]);
 	}
 
 	public void PlayTrashRifling(){
-		AudioSource maudio = GetComponent<AudioSource> ();
 		maudio.PlayOneShot (list [3]);
 	}
 
 	public void PlayStyrofoamCrunch(){
-		AudioSource maudio = GetComponent<AudioSource> ();
 		maudio.PlayOneShot (list [4]);
 	}
 
 	public void PlaySpookyBG(){
-		AudioSource maudio = GetComponent<AudioSource> ();
 		maudio.PlayOneShot (list [5]);
 	}
 
 	public void PlayRain(){
-		AudioSource maudio = GetComponent<AudioSource> ();
 		maudio.PlayOneShot (list [6]);
+	}	
+
+		public void PlaySkinningCorpse(){
+		maudio.PlayOneShot (list [7]);
 	}
+
+	public void PlayCrowCaw(){
+		maudio.PlayOneShot (list [8]);
+	}
+
+
 }
