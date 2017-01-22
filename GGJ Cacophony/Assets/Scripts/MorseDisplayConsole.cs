@@ -59,7 +59,8 @@ public class MorseDisplayConsole : MonoBehaviour
                     speed = speed.Substring(0, 3);
                 }
 
-                string speedText = "PROCESSING SIGNAL AT " + ("" + speed + "X SPEED");
+                string speedText = MorseAudioController.instance.playingOrPaused ? "PROCESSING SIGNAL AT " : "SIGNAL PAUSED; ";
+                speedText += speed + "X SPEED";
 
 
                 string playbackMessage = "";

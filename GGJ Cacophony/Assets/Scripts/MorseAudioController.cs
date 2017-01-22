@@ -34,7 +34,7 @@ public class MorseAudioController : MonoBehaviour
 
     public static bool morsePlaying;
 
-    private bool playing = true;
+    public bool playingOrPaused { get; private set;}
     private float timer = 0f;
     private bool needElementSeparator = false;
     private bool playingCharacter = false;
@@ -47,6 +47,7 @@ public class MorseAudioController : MonoBehaviour
         mAudioSource = GetComponent<AudioSource>();
         upcomingMorseMessages = new Queue<string[][]>();
         morsePlaybackScalar = 1f;
+        playingOrPaused = true;
     }
 
     public void EnqueueMorseString(string morseStringIn)
@@ -94,7 +95,7 @@ public class MorseAudioController : MonoBehaviour
             MoveReadingHead(true);
         }
         if (Input.GetKeyDown(KeyCode.Backslash)) {
-            playing = !playing;
+            playingOrPaused = !playingOrPaused;
         }
         if (Input.GetKeyDown(KeyCode.Tab)) {
             playNextMorseString();
@@ -104,7 +105,7 @@ public class MorseAudioController : MonoBehaviour
     private void manageMorseStateMachine()
     {
         //I hate this:
-        if (currentMorseMessage != null && playing) {
+        if (currentMorseMessage != null && playingOrPaused) {
             timer -= Time.deltaTime * morsePlaybackScalar;
             if (timer <= 0) {
                 betweenMessages = false;
