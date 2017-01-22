@@ -21,6 +21,7 @@ public class PlayerState : MonoBehaviour {
     public Room currentRoom;
     public List<string> stateVariables = new List<string>();
     public List<string> allVerbs = new List<string>();
+    public List<string> eatenThings = new List<string>();
 
     void Start()
     {

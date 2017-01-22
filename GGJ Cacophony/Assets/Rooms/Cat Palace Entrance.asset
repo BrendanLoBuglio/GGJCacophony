@@ -49,7 +49,7 @@ MonoBehaviour:
     hidden: 1
     active: 1
   - name: guard
-    inspectionDescription: 
+    inspectionDescription: He stands a foot above your head.
     validActions:
     - actionName: tell;say
       events:

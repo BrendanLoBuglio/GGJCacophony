@@ -55,6 +55,7 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 1
   - name: lightbulb
     inspectionDescription: The sphere of light unwavering has been yellowed by time,
@@ -87,6 +88,7 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 1
   - name: crows
     inspectionDescription: Krobi are the most intelligent of the Vermi, or so, at
@@ -123,6 +125,7 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 0
   - name: helium tank;helium
     inspectionDescription: The tank is too thick to gnaw through, but there is a nozzle
@@ -156,7 +159,76 @@ MonoBehaviour:
               m_CallState: 2
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 0
+  - name: knife
+    inspectionDescription: Rusty but sharp. It could easily be used as a weapon.
+    validActions:
+    - actionName: take;grab
+      events:
+      - actionDescription: Your hands can't grasp the knife.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: eat
+      events:
+      - actionDescription: Your teeth make short work of the blade. It sinks into
+          your stomach.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
+  - name: saltshaker
+    inspectionDescription: There are tiny particles inside the vial.
+    validActions:
+    - actionName: shake
+      events:
+      - actionDescription: It makes a pleasant sound as the particles slosh back and
+          forth in the container. Some of it falls out onto the ground.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: eat
+      events:
+      - actionDescription: You instantly regret it as the taste of salt fills your
+          mouth. You suddenly feel very thirsty.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
+  - name: couch;on couch
+    inspectionDescription: It is large and red and soft. Bits of cloud sprout from
+      it.
+    validActions:
+    - actionName: eat;bite;chew
+      events:
+      - actionDescription: You rip off cloud and fabric. It tickles your throat.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: sleep;sit;
+      events:
+      - actionDescription: You cuddle up onto the soft fabric. Its only a moment before
+          an infant Krobi wakes you with its calls.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
   connections:
   - direction: 1
     destinationRoom: {fileID: 11400000, guid: 1eea65ca91040c14e9f2ae321e6bf059, type: 2}

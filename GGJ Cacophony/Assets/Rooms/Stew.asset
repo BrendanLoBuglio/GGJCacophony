@@ -29,6 +29,15 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    - actionName: grab;take
+      events:
+      - actionDescription: You grab at the algae but it washes of your hand with the
+          water.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
     hidden: 0
     active: 1
   connections:

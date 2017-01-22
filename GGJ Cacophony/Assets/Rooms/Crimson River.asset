@@ -29,6 +29,15 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    - actionName: smash;hit;break
+      events:
+      - actionDescription: You beat it with your paws until it rolls down a trash
+          hill. Several new cracks spread across the black glass.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
     hidden: 0
     active: 1
   - name: plastic
@@ -53,6 +62,15 @@ MonoBehaviour:
     - actionName: eat
       events:
       - actionDescription: You slurp it down, like a noodle. It's good trash.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: twist
+      events:
+      - actionDescription: You twist it into a triangle. It ssnaps back when you let
+          ggo.
         actionCallback:
           m_PersistentCalls:
             m_Calls: []
