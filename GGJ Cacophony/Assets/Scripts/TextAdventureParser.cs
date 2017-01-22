@@ -97,6 +97,7 @@ public class TextAdventureParser : MonoBehaviour {
                 }
                 break;
         }
+        EntryField.inputField.text = "";
     }
 
     public void Look()

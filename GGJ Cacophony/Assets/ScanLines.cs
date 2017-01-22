@@ -5,15 +5,16 @@ using UnityStandardAssets.ImageEffects;
 
 public class ScanLines : PostEffectsBase{
 
-    public Material scanLineMaterial;
+    public Shader shader;
+    private Material m;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+        m = new Material(shader);
+    }
+
+    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        Graphics.Blit(source, destination, m);
+    }
 }

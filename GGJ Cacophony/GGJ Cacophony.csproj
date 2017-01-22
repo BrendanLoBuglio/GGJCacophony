@@ -102,12 +102,14 @@
     <Compile Include="Assets\Scripts\RoomInstancer.cs" />
     <Compile Include="Assets\Scripts\TextAdventureParser.cs" />
     <Compile Include="Assets\Scripts\TextLog.cs" />
+    <Compile Include="Assets\Scripts\WikiPlayerManager.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
     <Compile Include="Assets\VHS\Scripts\VHSPostProcessEffect.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\ScanLine.shader" />
     <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\Common\ExtractChannel.shader" />
     <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\Common\FillColor.shader" />
     <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\Common\ReadPackedData.shader" />
