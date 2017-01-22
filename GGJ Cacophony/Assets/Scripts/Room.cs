@@ -28,6 +28,18 @@ public class Room : ScriptableObject{
         return null;
     }
 
+    public RoomConnection GetConnectionInDirection(Direction dir)
+    {
+        for (int k = 0; k < connections.Length; k++)
+        {
+            if (connections[k].direction == dir)
+            {
+                return connections[k];
+            }
+        }
+        return null;
+    }
+
     public WorldObject FindWorldObject (string name, bool mustBeActive = true)
     {
         for(int k=0; k < objects.Length; k++)
@@ -91,7 +103,7 @@ public class VerbNounAction
 
     public ActionEvent GetNextActionEvent()
     {
-        actionEventIndex = Mathf.Min(actionEventIndex + 1, events.Length);
+        actionEventIndex = Mathf.Min(actionEventIndex + 1, events.Length-1);
         return events[actionEventIndex];
     }
 }

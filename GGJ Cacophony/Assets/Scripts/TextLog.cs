@@ -44,12 +44,13 @@ public class TextLog : MonoBehaviour {
 
 	public void AddTextLine(string line, bool addSpace = true)
     {
+
+        printQueue.Enqueue(line);
         // print a line for space
         if (addSpace)
         {
-            printQueue.Enqueue("");    
+            printQueue.Enqueue("");
         }
-        printQueue.Enqueue(line);
         if (printCoroutine == null)
         {
             printCoroutine = StartCoroutine(RecursivelyPrintLines());

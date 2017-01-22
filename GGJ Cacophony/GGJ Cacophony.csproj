@@ -75,10 +75,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AudioArray.cs" />
     <Compile Include="Assets\Scripts\CallbackReciever.cs" />
     <Compile Include="Assets\Scripts\ClientNetworkManager.cs" />
     <Compile Include="Assets\Scripts\EntryField.cs" />
     <Compile Include="Assets\Scripts\HostNetworkManager.cs" />
+    <Compile Include="Assets\Scripts\KeyInAudio.cs" />
     <Compile Include="Assets\Scripts\MessageSender.cs" />
     <Compile Include="Assets\Scripts\MorseAudioController.cs" />
     <Compile Include="Assets\Scripts\MorseDisplayConsole.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Assets\Scripts\MorseUtility.cs" />
     <Compile Include="Assets\Scripts\PlayerState.cs" />
     <Compile Include="Assets\Scripts\Room.cs" />
+    <Compile Include="Assets\Scripts\RoomInstancer.cs" />
     <Compile Include="Assets\Scripts\TextAdventureParser.cs" />
     <Compile Include="Assets\Scripts\TextLog.cs" />
   </ItemGroup>
