@@ -65,6 +65,8 @@ public class MorseAudioController : MonoBehaviour
         wordIndex = 0;
         letterIndex = 0;
         charIndex = 0;
+        needElementSeparator = false;
+        playingCharacter = false;
     }
 
     private void Update()
@@ -86,10 +88,10 @@ public class MorseAudioController : MonoBehaviour
             IncrementTimescale(true);
         }
         if (Input.GetKeyDown(KeyCode.LeftBracket)) {
-            //One character back
+            MoveReadingHead(false);
         }
         if (Input.GetKeyDown(KeyCode.RightBracket)) {
-            //One character forward
+            MoveReadingHead(true);
         }
         if (Input.GetKeyDown(KeyCode.Backslash)) {
             playing = !playing;
@@ -171,6 +173,44 @@ public class MorseAudioController : MonoBehaviour
         }
     }
 
+    private void MoveReadingHead(bool forward)
+    {
+        if(currentMorseMessage != null) {
+            //Small delay:
+            mAudioSource.Stop();
+            timer = dotLength * 3f;
+
+            needElementSeparator = false;
+            playingCharacter = false;
+
+            if (forward) {
+                letterIndex++;
+                charIndex = 0;
+                if (letterIndex >= currentMorseMessage[wordIndex].Length) {
+                    letterIndex = 0;
+                    wordIndex++;
+                    if(wordIndex >= currentMorseMessage.Length) {
+                        wordIndex = 0;
+                    }
+                }
+            }
+            else {
+                if(charIndex > 0) {
+                    charIndex = 0;
+                }
+                else {
+                    letterIndex--;
+                    if(letterIndex < 0) {
+                        wordIndex--;
+                        if(wordIndex < 0) {
+                            wordIndex = currentMorseMessage.Length - 1;
+                        }
+                        letterIndex = currentMorseMessage[wordIndex].Length - 1;
+                    }
+                }
+            }
+        }
+    }
 
     public void IncrementTimescale(bool add)
     {

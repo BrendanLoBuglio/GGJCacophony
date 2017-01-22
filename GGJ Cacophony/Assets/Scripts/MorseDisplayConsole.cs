@@ -90,7 +90,6 @@ public class MorseDisplayConsole : MonoBehaviour
                 }
 
                 playbackStream += MorseAudioController.instance.GetPlaybackStateString(noDecoWidth * 2f, out playbackIndex);
-                Debug.Log("playbackIndex is " + playbackIndex + " and PlaybackStream is " + playbackStream);
 
                 if(playbackStream.Length > readingHeadOffset) {
                     playbackStream = playbackStream.Substring(playbackIndex, noDecoWidth);
