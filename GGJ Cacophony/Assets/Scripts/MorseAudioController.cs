@@ -26,7 +26,7 @@ public class MorseAudioController : MonoBehaviour
     private string currentSentence;
 
     private string[][] currentMorseMessage;
-    private Queue<string[][]> upcomingMorseMessages;
+    private Queue<string[][]> upcomingMorseMessages = new Queue<string[][]>();
 
     public int wordIndex { get; private set; }
     public int letterIndex { get; private set; }
