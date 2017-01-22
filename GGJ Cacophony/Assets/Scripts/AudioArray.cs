@@ -20,7 +20,7 @@ public class AudioArray : MonoBehaviour
 
 			(AudioClip)Resources.Load ("Hamburger Shuffle"),
 
-			(AudioClip)Resources.Load ("I Ate A Styrofoam Cup For This "),
+			(AudioClip)Resources.Load ("I Ate A Styrofoam Cup For This"),
 
 			(AudioClip)Resources.Load ("Wind"),
 
