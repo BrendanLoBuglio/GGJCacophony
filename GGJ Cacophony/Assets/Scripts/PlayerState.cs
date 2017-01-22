@@ -61,6 +61,7 @@ public class PlayerState : MonoBehaviour {
                 TextLog.AddTextLineToTextLog(conn.inactiveExplanation);
             }
         }
+        TextLog.AddWhiteSpace();
     }
 
 }
