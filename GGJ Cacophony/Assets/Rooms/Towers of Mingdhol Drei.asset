@@ -16,7 +16,38 @@ MonoBehaviour:
     around you, and fling their questions like flecks of spray. \u201CWhence came
     you, Marsu, silver-clad? Where shall you go?\u201D You give no answer. You are
     the last of your kind, and you will remember the fallen."
-  objects: []
+  objects:
+  - name: glass
+    inspectionDescription: The mirror sheen of the broken glass reflects your snout,
+      your whiskers, your eyes black as coal. They shall not see your like again when
+      you go, not for a long time.
+    validActions:
+    - actionName: eat
+      events:
+      - actionDescription: You swallow the glass. It is not the sharpest thing you've
+          ever eaten, nor is it the hardest.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
+  - name: flies
+    inspectionDescription: The Dromii are small, but abundant. Nowhere in the Labyrinth
+      can you escape them, but they mean no harm.
+    validActions:
+    - actionName: eat
+      events:
+      - actionDescription: You consume a handful of flittering Dromii. They scream
+          for their families.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
   connections:
   - direction: 1
     destinationRoom: {fileID: 11400000, guid: 47fcf68ec7d4a4f45b7adef093b9276a, type: 2}

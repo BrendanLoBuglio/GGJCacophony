@@ -16,7 +16,21 @@ MonoBehaviour:
     brackish waters, undulating in rippling waves whenever one of the Krobi lands
     to bathe in the shallows. You take a moment to slake your own thirst, but the
     Dit and the Dah egg you onward. You cannot remain here long.
-  objects: []
+  objects:
+  - name: algae
+    inspectionDescription: The carpet of green undulates on the waters.
+    validActions:
+    - actionName: eat
+      events:
+      - actionDescription: You nibble at the algae. It's important to get all the
+          major food groups.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
   connections:
   - direction: 0
     destinationRoom: {fileID: 11400000, guid: 721193b3f90f0ad42a4e43eca84b6290, type: 2}

@@ -16,7 +16,50 @@ MonoBehaviour:
     glass. A scrap of that thing PLA-STICK, which never rots. A length of the singing
     wire, broken from its mouthpiece. The Dit and the Dah stir as you pass, but they
     have no loyalty to such things, not anymore.
-  objects: []
+  objects:
+  - name: TV
+    inspectionDescription: The box gurgles as the water flows around and through it.
+      It is dead and inert.
+    validActions:
+    - actionName: eat
+      events:
+      - actionDescription: You gnaw at a corner, and manage to bite off a piece.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
+  - name: plastic
+    inspectionDescription: This is the black PLA-STICK that stretches and seals. You
+      have cut open many bags of such things for the trash within, but this scraps
+      contains nothing of value.
+    validActions:
+    - actionName: eat
+      events:
+      - actionDescription: You eat the PLA-STICK. It is chewy.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
+  - name: antenna
+    inspectionDescription: The wire that once sang lies limp in the currents of the
+      river. The Dit and the Dah recoil as you inspect it.
+    validActions:
+    - actionName: eat
+      events:
+      - actionDescription: You slurp it down, like a noodle. It's good trash.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
   connections:
   - direction: 1
     destinationRoom: {fileID: 11400000, guid: e0d183ee5c8480049ad03d53c5e1c3a2, type: 2}
