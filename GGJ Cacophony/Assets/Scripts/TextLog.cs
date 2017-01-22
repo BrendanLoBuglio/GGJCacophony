@@ -48,6 +48,10 @@ public class TextLog : MonoBehaviour {
 
     public void AddTextLine(string line)
     {
+        if (string.IsNullOrEmpty(line)) {
+            return;
+        }
+
         string[] lines = line.Split('\n');
         foreach (string l in lines)
         {

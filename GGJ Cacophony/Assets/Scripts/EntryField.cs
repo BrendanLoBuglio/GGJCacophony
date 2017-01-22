@@ -26,7 +26,7 @@ public class EntryField : MonoBehaviour{
 
     public void SendTextMessage()
     {
-        if (Input.GetKey(KeyCode.Return) && inputField.text != "")
+        if (Input.GetKey(KeyCode.Return) && !string.IsNullOrEmpty(inputField.text))
         {
             MessageSender instance = MessageSender.instance;
             if (instance != null)
@@ -38,7 +38,7 @@ public class EntryField : MonoBehaviour{
         }
     }
 
-    public void reset()
+    public void Reset()
     {
         inputField.ActivateInputField();
         inputField.text = "";
