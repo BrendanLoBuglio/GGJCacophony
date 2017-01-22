@@ -12,12 +12,15 @@ public class MorseDisplayConsole : MonoBehaviour
     private const int readingHeadOffset = 10;
     private const string borderDeco = "# ";
     private const float newMessageBlinkRate = 1.25f;
-    [SerializeField] private CanvasGroup mCanvasGroup;
+    [SerializeField] private Image blackBackground;
 
 
     private void Start ()
     {
         mText = GetComponent<Text>();
+        mText.color = new Color(mText.color.r, mText.color.g, mText.color.b, 0f);
+        blackBackground.color = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, 0f);
+
         drawConsole();
 	}
 
@@ -28,7 +31,8 @@ public class MorseDisplayConsole : MonoBehaviour
 
     public void Show()
     {
-        mCanvasGroup.alpha = 1f;
+        mText.color = new Color(mText.color.r, mText.color.g, mText.color.b, 1f);
+        blackBackground.color = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, 1f);
     }
 
     private void drawConsole ()
