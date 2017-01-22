@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class TextLog : MonoBehaviour {
 
     public GameObject textLinePrefab;
+    private RectTransform mRectTransform;
+    private Text lastGennedTextLine;
     public float waitTimeBetweenLines = .5f;
     private Color col;
-    Coroutine printingLinesCoroutine;
-    Queue<string> textQueue = new Queue<string>();
 
     public static TextLog _instance;
     public static TextLog instance {
@@ -22,6 +22,11 @@ public class TextLog : MonoBehaviour {
         }
     }
 
+    private void Start()
+    {
+        mRectTransform = this.GetComponent<RectTransform>();
+    }
+
     public static void AddTextLineToTextLog(string line, bool addSpace = true)
     {
         instance.AddTextLine(line, addSpace);
@@ -32,74 +37,90 @@ public class TextLog : MonoBehaviour {
         // print a line for space
         if (addSpace)
         {
-            textQueue.Enqueue("Empty");
+            PrintLine("");
         }
-        textQueue.Enqueue(line);
-        if(printingLinesCoroutine == null)
-        {
-            printingLinesCoroutine = StartCoroutine(RecursivelyPrintLines());
-        }
+        StartCoroutine(RecursivelyPrintLines(line));
         
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S) && lastGennedTextLine != null) {
+            getLineWidthOfTextField(lastGennedTextLine);
+        }
+    }
+
+
     private string PrintLine(string line)
     {
-        string toReturn = "";
-        if (line == "Empty") { line = ""; toReturn = "Empty"; }
-        GameObject  spawnedLine = (GameObject)Instantiate(textLinePrefab, Vector2.zero, Quaternion.identity);
-        Text text = spawnedLine.GetComponent<Text>();
-        text.text = line;
-        Color originalCol = text.color;
-        spawnedLine.transform.SetParent(transform);
-        spawnedLine.transform.SetSiblingIndex(spawnedLine.transform.GetSiblingIndex() - 1);
+        lastGennedTextLine = ((GameObject)Instantiate(textLinePrefab, Vector2.zero, Quaternion.identity)).GetComponent<Text>();
+        lastGennedTextLine.text = line;
+        Color originalCol = lastGennedTextLine.color;
+        lastGennedTextLine.transform.SetParent(transform);
+        lastGennedTextLine.transform.SetSiblingIndex(lastGennedTextLine.transform.GetSiblingIndex() - 1);
+        lastGennedTextLine.rectTransform.sizeDelta = mRectTransform.sizeDelta;
+        lastGennedTextLine.transform.localScale = textLinePrefab.transform.localScale;
 
-        text.color = new Color(originalCol.r, originalCol.g, originalCol.b, 0);
+        lastGennedTextLine.color = new Color(originalCol.r, originalCol.g, originalCol.b, 0);
         Canvas.ForceUpdateCanvases();
-        text.color = new Color(originalCol.r, originalCol.g, originalCol.b, 1);
-        if (text.cachedTextGenerator.lineCount > 1)
+        lastGennedTextLine.color = new Color(originalCol.r, originalCol.g, originalCol.b, 1);
+        if (lastGennedTextLine.cachedTextGenerator.lineCount > 1)
         {
-            var uiLines = text.cachedTextGenerator.lines;
+            var uiLines = lastGennedTextLine.cachedTextGenerator.lines;
             string currentLine = line.Substring(0, uiLines[1].startCharIdx);
-            text.text = currentLine;
-            Canvas.ForceUpdateCanvases();
-            StartCoroutine(addWhiteSpace(text));
+            lastGennedTextLine.text = currentLine;
+            StartCoroutine(addWhiteSpace(lastGennedTextLine));
             return line.Substring(uiLines[1].startCharIdx);
         }
         else {
-            StartCoroutine(addWhiteSpace(text));
-            return toReturn;
+            StartCoroutine(addWhiteSpace(lastGennedTextLine));
+            return "";
         }
+    }
+
+    private int getLineWidthOfTextField(Text textField)
+    {
+        string testString = "";
+        for (int i = 0; i < 1000; i++) {
+            testString += "@";
+        }
+        return getLineWidthOfTextField(textField, testString);
+    }
+
+    private int getLineWidthOfTextField(Text textField, string testString)
+    {
+        Text testTextObj = ((GameObject)Instantiate(textLinePrefab, Vector2.zero, Quaternion.identity)).GetComponent<Text>();
+        testTextObj.text = testString;
+        testTextObj.rectTransform.sizeDelta = mRectTransform.sizeDelta;
+        testTextObj.color = Color.clear;
+        testTextObj.transform.SetParent(this.transform);
+        testTextObj.transform.SetSiblingIndex(0);
+        Canvas.ForceUpdateCanvases();
+
+        if(testTextObj.cachedTextGenerator.lines.Count <= 1) {
+            //Only one liner:
+            return testString.Length;
+        }
+        int width = testTextObj.cachedTextGenerator.lines[1].startCharIdx;
+        Debug.Log("Returning width " + width);
+
+        Destroy(testTextObj.gameObject);
+        return width;
     }
 
     IEnumerator addWhiteSpace(Text text) {
         yield return null;
         text.text += " ";
-        Canvas.ForceUpdateCanvases();
     }
 
-    IEnumerator RecursivelyPrintLines()
+    IEnumerator RecursivelyPrintLines(string message)
     {
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
-        EntryField.inputField.interactable = false;
-        EntryField.inputField.DeactivateInputField();
-        string message = textQueue.Dequeue();
         message = PrintLine(message);
-        while(message.Length > 0 || textQueue.Count != 0)
+        while(message.Length > 0)
         {
-            if (message != "Empty")
-            {
-                yield return new WaitForSeconds(waitTimeBetweenLines);
-            }
-            if(message == "Empty" || message.Length == 0)
-            {
-                message = textQueue.Dequeue();
-            }
+            yield return new WaitForSeconds(waitTimeBetweenLines);
             message = PrintLine(message);
         }
-        printingLinesCoroutine = null;
-        EntryField.inputField.ActivateInputField();
-        EntryField.inputField.interactable = true;
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(EntryField.inputField.gameObject);
     }
 
 }
