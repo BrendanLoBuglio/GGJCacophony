@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\HostNetworkManager.cs" />
     <Compile Include="Assets\Scripts\MessageSender.cs" />
     <Compile Include="Assets\Scripts\MorseAudioController.cs" />
+    <Compile Include="Assets\Scripts\MorseDisplayConsole.cs" />
     <Compile Include="Assets\Scripts\MorseMessageSender.cs" />
     <Compile Include="Assets\Scripts\MorseUtility.cs" />
     <Compile Include="Assets\Scripts\PlayerState.cs" />

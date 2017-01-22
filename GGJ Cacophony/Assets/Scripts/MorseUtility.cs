@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,14 @@ public static class MorseUtility
 
     public static string GenerateMorseSentence(string input)
     {
+        char[] arr = input.Where(c => (c == '.' || c == ' ' || c == '-')).ToArray();
+        string morseOnlyInput = new string(arr);
+        Debug.Log("Input is " + input + ", while morseOnlyInput is " + morseOnlyInput);
+        if(input == morseOnlyInput) {
+
+        }
+
+
         string output = "";
         for (int i = 0; i < input.Length; i++) {
             output += GetMorseLetter(input[i]);
@@ -23,6 +32,7 @@ public static class MorseUtility
     {
         //Guarantee lowercase:
         input = ("" + input).ToLower()[0];
+
 
         if(input == ' ') {
             return GetMorseSpace();
