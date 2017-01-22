@@ -216,12 +216,12 @@ Prefab:
     - target: {fileID: 224087978634670420, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -23
       objectReference: {fileID: 0}
     - target: {fileID: 224822829051131764, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 114161752823080738, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
@@ -311,7 +311,7 @@ Prefab:
     - target: {fileID: 114322420102948676, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: waitTimeBetweenLines
-      value: 1
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 114248885750373034, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
@@ -886,12 +886,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allRooms:
-  - {fileID: 11400000, guid: dccf8c48db2467c43ac4aa16840e79d6, type: 2}
+  - {fileID: 11400000, guid: eec2acf928d759d42a846daed6b730d0, type: 2}
+  - {fileID: 11400000, guid: 472472ade2f2e1840bdd150fb0c52cdf, type: 2}
+  - {fileID: 11400000, guid: 71746e4f9d1a9b3469db30b2699fe961, type: 2}
   - {fileID: 11400000, guid: 12c330018e99a294982bb60bf3aa875b, type: 2}
-  - {fileID: 11400000, guid: dea8d27edbf684f4183eed812334636e, type: 2}
+  - {fileID: 11400000, guid: dccf8c48db2467c43ac4aa16840e79d6, type: 2}
   - {fileID: 11400000, guid: 0ca76e72003285d4fa9f4442dac530f8, type: 2}
+  - {fileID: 11400000, guid: 1eea65ca91040c14e9f2ae321e6bf059, type: 2}
   - {fileID: 11400000, guid: 5a67b1045a3150d45a0738561ba41ac3, type: 2}
+  - {fileID: 11400000, guid: 1fe00b15a7469d346bb63210f942a752, type: 2}
+  - {fileID: 11400000, guid: dea8d27edbf684f4183eed812334636e, type: 2}
+  - {fileID: 11400000, guid: 721193b3f90f0ad42a4e43eca84b6290, type: 2}
+  - {fileID: 11400000, guid: 9764f2da69c33b64d8332d8877c8acdf, type: 2}
+  - {fileID: 11400000, guid: 661ceb697c4dadb419d2cbf2676b4f1f, type: 2}
   - {fileID: 11400000, guid: 47fcf68ec7d4a4f45b7adef093b9276a, type: 2}
+  - {fileID: 11400000, guid: 52142dd830f22f54a810c28747ab4afa, type: 2}
+  - {fileID: 11400000, guid: c2a01c49b04e262459fc93f68fd51977, type: 2}
   - {fileID: 11400000, guid: e0d183ee5c8480049ad03d53c5e1c3a2, type: 2}
   currentRoom: {fileID: 0}
   stateVariables: []

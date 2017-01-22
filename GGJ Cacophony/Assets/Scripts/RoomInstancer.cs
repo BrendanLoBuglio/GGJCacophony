@@ -28,15 +28,24 @@ public class RoomInstancer : MonoBehaviour {
 	
     public Room RecursivelySpawnRoom(Room firstRoom, ref List<string> spawnedRooms)
     {
+        if (!firstRoom.realRoom)
+            return null;
         Room toReturn = ScriptableObject.Instantiate(firstRoom);
         spawnedRooms.Add(firstRoom.name);
         for(int k=0; k < toReturn.connections.Length; k++)
         {
-            if (!spawnedRooms.Contains(toReturn.connections[k].destinationRoom.name))
+            if (!spawnedRooms.Contains(toReturn.connections[k].destinationRoom.name.Replace("(Clone)","")))
             {
                 Room connection = RecursivelySpawnRoom(toReturn.connections[k].destinationRoom, ref spawnedRooms);
-                toReturn.connections[k].destinationRoom = connection;
-                connection.GetConnectionInDirection(ToInverseDirection(toReturn.connections[k].direction)).destinationRoom = toReturn;
+                if (connection != null)
+                {
+                    toReturn.connections[k].destinationRoom = connection;
+                    RoomConnection con = connection.GetConnectionInDirection(ToInverseDirection(toReturn.connections[k].direction));
+                    if (con != null)
+                    {
+                        con.destinationRoom = toReturn;
+                    }
+                }
             }
         }
         toReturn.name = toReturn.name.Replace("(Clone)", "");

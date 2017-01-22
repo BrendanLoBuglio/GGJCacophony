@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce57d858bdec0d48920109d03480bfd, type: 3}
+  m_Name: Blibdoolpoolp
+  m_EditorClassIdentifier: 
+  description: "Ah, Blibdoolpoolp. What more can be said about this stretch of steaming
+    trash? The garbage is bountiful and rich and always at least partially edible,
+    and the burrows of the clever Rakki border this corner of the Labyrinth. They
+    dry-wring their hands, black masks wrinkled as they squint at your passing. \u201CMarsu!
+    Cousin Marsu! What scavenge do you seek?\u201D You tell them, and they laugh,
+    for only the dead could be bolder."
+  objects: []
+  connections:
+  - direction: 0
+    destinationRoom: {fileID: 11400000, guid: 472472ade2f2e1840bdd150fb0c52cdf, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  - direction: 1
+    destinationRoom: {fileID: 11400000, guid: 1fe00b15a7469d346bb63210f942a752, type: 2}
+    requirements:
+    - asdfasdfad
+    inactiveExplanation: To go further south is to enter the hunting grounds of the
+      sleek Canim. You should not wander that way, not even if you were at full strength.
+  - direction: 2
+    destinationRoom: {fileID: 11400000, guid: 661ceb697c4dadb419d2cbf2676b4f1f, type: 2}
+    requirements:
+    - dfaklsdjfasd
+    inactiveExplanation: The road east is the road home, and it is not meant for you.
+      You turn back to the Labyrinth, and resume your journey.
+  - direction: 3
+    destinationRoom: {fileID: 11400000, guid: 47fcf68ec7d4a4f45b7adef093b9276a, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  realRoom: 1

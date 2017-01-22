@@ -20,6 +20,11 @@ public class TextAdventureParser : MonoBehaviour {
             StartGame();
             return;
         }
+        if (TextLog.GameOver)
+        {
+            Application.Quit();
+            return;
+        }
         if (message.Replace(" ", "") != "")
         {
             TextLog.instance.AddTextLine(message, false);
@@ -56,9 +61,6 @@ public class TextAdventureParser : MonoBehaviour {
             case "check":
                 Inspect(splitMessage[1]);
                 break;
-            case "fuck":
-                TextLog.instance.AddTextLine("No");
-                break;
             case "":
                 break;
             default:
@@ -94,6 +96,8 @@ public class TextAdventureParser : MonoBehaviour {
         else if (ateLightbulb && ateBatter)
         {
             TextLog.AddTextLineToTextLog("Soon your stomach has done its work, and you pass a steaming pile of broken glass, from which the batter juts like a flag. The one-eyed Krobi sees it, just as you slip beyond sight; it caws with glee when it discovers your leavings, for it knows that where there is a cake-mixer, cake must follow. You need only wait before it chokes upon the glass. Everything has gone according to plan.");
+            state.stateVariables.Remove("AteLightbulb");
+            state.stateVariables.Remove("AteBatter");
             CallbackReciever.EnableObjectStatic(PlayerState.instance.currentRoom, "crows");
         }
         else if (!ateLightbulb && !ateBatter)
@@ -210,6 +214,11 @@ public class TextAdventureParser : MonoBehaviour {
         if(destinationRoom == null)
         {
             TextLog.instance.AddTextLine("You cannot walk " + direction.Value.ToString() + " there's shit in the way");
+            return;
+        }
+        if (!currentRoom.CanGoInDirection(direction.Value))
+        {
+            TextLog.instance.AddTextLine(currentRoom.GetConnectionInDirection(direction.Value).inactiveExplanation);
             return;
         }
         TextLog.instance.AddTextLine("You walk " + direction.ToString());

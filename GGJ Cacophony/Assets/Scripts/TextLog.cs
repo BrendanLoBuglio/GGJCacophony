@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class TextLog : MonoBehaviour {
 
+    public static bool GameOver;
+
     public GameObject textLinePrefab;
     private RectTransform mRectTransform;
     private Text lastGennedTextLine;

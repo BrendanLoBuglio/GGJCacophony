@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce57d858bdec0d48920109d03480bfd, type: 3}
+  m_Name: Spattergoo
+  m_EditorClassIdentifier: 
+  description: You wade through the mires of the Spattergoo, where now even Vermi
+    dare not go. The sludge pulses, green as paradise, and incontinent bubbles follow
+    in your wake like lost children. Around you, the walls of the Labyrinth of Trash
+    lean inward, their shadows lengthening as the plague sun limps across the bruised
+    sky.
+  objects: []
+  connections:
+  - direction: 0
+    destinationRoom: {fileID: 11400000, guid: 1eea65ca91040c14e9f2ae321e6bf059, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  - direction: 1
+    destinationRoom: {fileID: 11400000, guid: 1fe00b15a7469d346bb63210f942a752, type: 2}
+    requirements:
+    - asdfasdf
+    inactiveExplanation: ' To go further south is to enter the hunting grounds of
+      the sleek Canim. You should not wander that way, not even if you were at full
+      strength.'
+  - direction: 2
+    destinationRoom: {fileID: 11400000, guid: 0ca76e72003285d4fa9f4442dac530f8, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  - direction: 3
+    destinationRoom: {fileID: 11400000, guid: eec2acf928d759d42a846daed6b730d0, type: 2}
+    requirements:
+    - asdfasdf
+    inactiveExplanation: "West are the barren baronies, where the Nil\u2019Vermi still
+      rule. They still have the gall to look down upon your kind, now at the end of
+      all things. You should leave them be.  "
+  realRoom: 1

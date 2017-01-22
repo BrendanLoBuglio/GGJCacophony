@@ -20,9 +20,21 @@ MonoBehaviour:
   connections:
   - direction: 1
     destinationRoom: {fileID: 11400000, guid: e0d183ee5c8480049ad03d53c5e1c3a2, type: 2}
-    active: 1
+    requirements: []
     inactiveExplanation: 
   - direction: 3
     destinationRoom: {fileID: 11400000, guid: 5a67b1045a3150d45a0738561ba41ac3, type: 2}
-    active: 1
+    requirements: []
     inactiveExplanation: 
+  - direction: 2
+    destinationRoom: {fileID: 11400000, guid: c2a01c49b04e262459fc93f68fd51977, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  - direction: 0
+    destinationRoom: {fileID: 11400000, guid: 721193b3f90f0ad42a4e43eca84b6290, type: 2}
+    requirements:
+    - asdasd
+    inactiveExplanation: You must scale the mountains of garbage to proceed further
+      north, and that would take more time than you have. There must be an easier
+      way past.
+  realRoom: 1

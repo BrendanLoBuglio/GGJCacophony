@@ -20,9 +20,17 @@ MonoBehaviour:
   connections:
   - direction: 1
     destinationRoom: {fileID: 11400000, guid: 47fcf68ec7d4a4f45b7adef093b9276a, type: 2}
-    active: 1
+    requirements: []
     inactiveExplanation: 
   - direction: 0
     destinationRoom: {fileID: 11400000, guid: 0ca76e72003285d4fa9f4442dac530f8, type: 2}
-    active: 1
+    requirements: []
+    inactiveExplanation: 
+  - direction: 2
+    destinationRoom: {fileID: 11400000, guid: 472472ade2f2e1840bdd150fb0c52cdf, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  - direction: 3
+    destinationRoom: {fileID: 11400000, guid: 1eea65ca91040c14e9f2ae321e6bf059, type: 2}
+    requirements: []
     inactiveExplanation: 

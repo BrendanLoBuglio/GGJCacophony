@@ -25,7 +25,8 @@ MonoBehaviour:
     their hoard."
   objects:
   - name: batter
-    inspectionDescription: 
+    inspectionDescription: The tool of the ones who came before is rusted, but still
+      whole. The beaters glint as you drag the mixer out of the shadows.
     validActions:
     - actionName: eat;chew;bite;swallow;ingest
       events:
@@ -56,18 +57,13 @@ MonoBehaviour:
             Culture=neutral, PublicKeyToken=null
     active: 1
   - name: lightbulb
-    inspectionDescription: 
+    inspectionDescription: The sphere of light unwavering has been yellowed by time,
+      the glass fogged with grime. The wires within are knotted in dancing loops.
     validActions:
     - actionName: eat;chew;bite;swallow;ingest
       events:
       - actionDescription: You swallow a sphere of light unwavering. It settles comfortably
           in your gut.
-        actionCallback:
-          m_PersistentCalls:
-            m_Calls: []
-          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-      - actionDescription: The sphere of light rolls in your gut.
         actionCallback:
           m_PersistentCalls:
             m_Calls:
@@ -85,9 +81,17 @@ MonoBehaviour:
               m_CallState: 2
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+      - actionDescription: The sphere of light rolls in your gut.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
     active: 1
   - name: crows
-    inspectionDescription: 
+    inspectionDescription: Krobi are the most intelligent of the Vermi, or so, at
+      least, they like to say. Those nesting among the Cliffs are fiendishly loyal,
+      to each other and their masters.
     validActions:
     - actionName: tell
       events:
@@ -120,8 +124,10 @@ MonoBehaviour:
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
     active: 0
-  - name: helium tank
-    inspectionDescription: 
+  - name: helium tank;helium
+    inspectionDescription: The tank is too thick to gnaw through, but there is a nozzle
+      and spot. The weight does not shift when you drag it into the open. Nothing
+      rattles or moves.
     validActions:
     - actionName: inhale;breathe
       events:
@@ -152,7 +158,26 @@ MonoBehaviour:
             Culture=neutral, PublicKeyToken=null
     active: 0
   connections:
+  - direction: 1
+    destinationRoom: {fileID: 11400000, guid: 1eea65ca91040c14e9f2ae321e6bf059, type: 2}
+    requirements: []
+    inactiveExplanation: 
   - direction: 2
     destinationRoom: {fileID: 11400000, guid: 0ca76e72003285d4fa9f4442dac530f8, type: 2}
-    active: 1
+    requirements: []
     inactiveExplanation: 
+  - direction: 3
+    destinationRoom: {fileID: 11400000, guid: eec2acf928d759d42a846daed6b730d0, type: 2}
+    requirements:
+    - asdfasd
+    inactiveExplanation: " West are the barren baronies, where the Nil\u2019Vermi
+      still rule. They still have the gall to look down upon your kind, now at the
+      end of all things. You should leave them be."
+  - direction: 0
+    destinationRoom: {fileID: 11400000, guid: 721193b3f90f0ad42a4e43eca84b6290, type: 2}
+    requirements:
+    - asdfasdf
+    inactiveExplanation: You must scale the mountains of garbage to proceed further
+      north, and that would take more time than you have. There must be an easier
+      way past.
+  realRoom: 1

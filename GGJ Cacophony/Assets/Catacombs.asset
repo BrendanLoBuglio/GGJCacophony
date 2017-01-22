@@ -11,92 +11,107 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce57d858bdec0d48920109d03480bfd, type: 3}
   m_Name: Catacombs
   m_EditorClassIdentifier: 
-  description: 
+  description: The Weeping Plague has ravaged these lands, and the graves have swollen
+    on its victims. You enter the catacombs beyond Meol Mial, your snout turned high
+    as the damp and the dead invade your nostrils. Long rows of tombstones identify
+    the fallen Felurri, who rot like napping dams in their marble caskets.
   objects:
-  - name: Steven's Gravestone
+  - name: grave
     inspectionDescription: 
     validActions:
-    - actionName: Dig
+    - actionName: dig
       events:
-      - actionDescription: You dig up steven's grave and find nothing
+      - actionDescription: "You find the grave of Ay L\u2019mayo, buried under the
+          sign of SeeLing, They That Watch. \u201CShe is fresh interned to the embrace
+          of stone, Marsu pouch-bearer,\u201D says the sorrowful gravekeeper, as he
+          prowls his dingy crypt. \u201CFind ye solace, for no tears cross the veil
+          of death, nay, not even those of the sickened weepers.\u201D He stalks back
+          into the shadows, lantern clamped between his teeth."
         actionCallback:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 114692780015651348, guid: 18fcdda13004c34418329630055f7d29,
+                type: 2}
+              m_MethodName: EnableObject
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: corpse
+                m_BoolArgument: 0
+              m_CallState: 2
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-      - actionDescription: You already dug that up
+      - actionDescription: The grave is already empty.
         actionCallback:
           m_PersistentCalls:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
     active: 1
-  - name: Brendan's Gravestone
+  - name: corpse
     inspectionDescription: 
     validActions:
-    - actionName: Dig
+    - actionName: skin
       events:
-      - actionDescription: You dig up Brendan's grave and find nothing
+      - actionDescription: "The casket slab is heavy, but slides free without protest,
+          it being set only a fortnight ago. The limp corpse of Ay is more fractious,
+          and takes three tries to pull free from her sepulchral bed. The lesser Vermi,
+          those maggots and worms without name, flee from their feast as you begin
+          the work of cutting the Felurri\u2019s skin free. Your teeth and claws make
+          quick work of the tissue between muscle and skin, and soon enough the hide
+          has been extricated from the flesh it so long covered."
         actionCallback:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 114692780015651348, guid: 18fcdda13004c34418329630055f7d29,
+                type: 2}
+              m_MethodName: EnableObject
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: skin
+                m_BoolArgument: 0
+              m_CallState: 2
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-      - actionDescription: You already did that
-        actionCallback:
-          m_PersistentCalls:
-            m_Calls: []
-          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-    active: 1
-  - name: Kevin's Gravestone
-    inspectionDescription: 
-    validActions:
-    - actionName: Dig
-      events:
-      - actionDescription: You dig up Kevin's cold decomposing corpse
-        actionCallback:
-          m_PersistentCalls:
-            m_Calls: []
-          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-      - actionDescription: Kevin's corpse lies on top of his grave
-        actionCallback:
-          m_PersistentCalls:
-            m_Calls: []
-          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-    active: 1
-  - name: Kevin's corpse
-    inspectionDescription: 
-    validActions:
-    - actionName: Skin
-      events:
-      - actionDescription: You rip kevin's skin off his dead body
-        actionCallback:
-          m_PersistentCalls:
-            m_Calls: []
-          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-      - actionDescription: There isn't any skin left to skin
+      - actionDescription: '"The skin lies in a pile in front of you."'
         actionCallback:
           m_PersistentCalls:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
     active: 0
-  - name: Kevin's skin
+  - name: skin
     inspectionDescription: 
     validActions:
-    - actionName: Wear
+    - actionName: wear
       events:
-      - actionDescription: You stretch Kevin's skin over you possum body
+      - actionDescription: "You slip into the skin of the dead body. It is a loose
+          fit.\r"
         actionCallback:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 114692780015651348, guid: 18fcdda13004c34418329630055f7d29,
+                type: 2}
+              m_MethodName: AddToState
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: WearingSkin
+                m_BoolArgument: 0
+              m_CallState: 2
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-      - actionDescription: You're already wearing Kevin's skin you sicko
+      - actionDescription: '"The skin lies in a pile in front of you."'
         actionCallback:
           m_PersistentCalls:
             m_Calls: []
@@ -106,5 +121,5 @@ MonoBehaviour:
   connections:
   - direction: 1
     destinationRoom: {fileID: 11400000, guid: dea8d27edbf684f4183eed812334636e, type: 2}
-    active: 1
+    requirements: []
     inactiveExplanation: 

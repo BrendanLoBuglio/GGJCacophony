@@ -22,5 +22,20 @@ MonoBehaviour:
   connections:
   - direction: 0
     destinationRoom: {fileID: 11400000, guid: e0d183ee5c8480049ad03d53c5e1c3a2, type: 2}
-    active: 1
+    requirements: []
     inactiveExplanation: 
+  - direction: 1
+    destinationRoom: {fileID: 11400000, guid: 1fe00b15a7469d346bb63210f942a752, type: 2}
+    requirements:
+    - asdfasdf
+    inactiveExplanation: To go further south is to enter the hunting grounds of the
+      sleek Canim. You should not wander that way, not even if you were at full strength.
+  - direction: 2
+    destinationRoom: {fileID: 11400000, guid: 71746e4f9d1a9b3469db30b2699fe961, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  - direction: 3
+    destinationRoom: {fileID: 11400000, guid: 52142dd830f22f54a810c28747ab4afa, type: 2}
+    requirements: []
+    inactiveExplanation: 
+  realRoom: 1
