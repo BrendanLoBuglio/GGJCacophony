@@ -10,9 +10,20 @@ public class CallbackReciever : MonoBehaviour {
         toActivate.active = true;
     }
 
-	public void EnableObject(string objectName)
+    public static void DisableObjectStatic(Room room, string objectName)
+    {
+        WorldObject toActivate = room.FindWorldObject(objectName, /*mustbeactive*/true);
+        toActivate.active = false;
+    }
+
+    public void EnableObject(string objectName)
     {
         EnableObjectStatic(PlayerState.instance.currentRoom, objectName);
+    }
+
+    public void DisableObject(string objectName)
+    {
+        DisableObjectStatic(PlayerState.instance.currentRoom, objectName);
     }
 
     public void AddToState(string stateName)
@@ -26,5 +37,10 @@ public class CallbackReciever : MonoBehaviour {
         PlayerState.instance.EnterRoom(RoomInstancer.instance.teleportRoom);
     }
 
+
+    public void EndGame()
+    {
+        TextLog.GameOver = true;
+    }
 
 }

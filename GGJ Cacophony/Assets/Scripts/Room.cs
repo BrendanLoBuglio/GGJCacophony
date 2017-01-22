@@ -15,6 +15,7 @@ public class Room : ScriptableObject{
     public string description;
     public WorldObject[] objects;
     public RoomConnection[] connections;
+    public bool realRoom = true;
 
     public Room GetRoomInDirection(Direction dir)
     {
@@ -26,6 +27,23 @@ public class Room : ScriptableObject{
             }
         }
         return null;
+    }
+
+    public bool CanGoInDirection(Direction dir)
+    {
+        RoomConnection connection = GetConnectionInDirection(dir);
+        PlayerState state = PlayerState.instance;
+        if (connection.requirements != null)
+        {
+            for (int k = 0; k < connection.requirements.Length; k++)
+            {
+                if (!state.stateVariables.Contains(connection.requirements[k]))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public RoomConnection GetConnectionInDirection(Direction dir)
@@ -44,10 +62,14 @@ public class Room : ScriptableObject{
     {
         for(int k=0; k < objects.Length; k++)
         {
-            if (mustBeActive && objects[k].active == false) continue;
-            if(objects[k].name.ToLower().Replace(" ", "") == name.ToLower().Replace(" ", ""))
+            if (mustBeActive != objects[k].active) continue;
+            string[] aliases = objects[k].name.Split(';');
+            foreach (string alias in aliases)
             {
-                return objects[k];
+                if (alias.ToLower().Replace(" ", "") == name.ToLower().Replace(" ", ""))
+                {
+                    return objects[k];
+                }
             }
         }
         return null;
@@ -59,7 +81,7 @@ public class RoomConnection
 {
     public Direction direction;
     public Room destinationRoom;
-    public bool active = true;
+    public string[] requirements;
     public string inactiveExplanation;
 }
 
@@ -83,7 +105,7 @@ public class WorldObject
             string[] possibleVerbs = validActions[k].actionName.Split(';');
             for (int c = 0; c < possibleVerbs.Length; c++)
             {
-                if(verb.ToLower() == possibleVerbs[k].ToLower())
+                if(verb.ToLower() == possibleVerbs[c].ToLower())
                 {
                     return validActions[k];
                 }
@@ -99,7 +121,7 @@ public class VerbNounAction
 {
     public string actionName;
     public ActionEvent[] events = new ActionEvent[1];
-    private int actionEventIndex = 0;
+    private int actionEventIndex = -1;
 
     public ActionEvent GetNextActionEvent()
     {
