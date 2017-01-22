@@ -14,6 +14,7 @@ public class TextLog : MonoBehaviour {
 
     Queue<string> printQueue = new Queue<string>();
 
+    #region Setup:
     public static TextLog _instance;
     public static TextLog instance {
         get{
@@ -29,6 +30,7 @@ public class TextLog : MonoBehaviour {
     {
         mRectTransform = this.GetComponent<RectTransform>();
     }
+    #endregion
 
     public static void AddTextLineToTextLog(string line, bool addSpace = true)
     {
@@ -49,51 +51,56 @@ public class TextLog : MonoBehaviour {
         }
     }
 
-    private void Update()
+    IEnumerator RecursivelyPrintLines()
     {
-        if (Input.GetKeyDown(KeyCode.S) && lastGennedTextLine != null) {
-            getLineWidthOfTextField(lastGennedTextLine);
+        if (EntryField.inputField.interactable) {
+            EntryField.inputField.interactable = false;
         }
+
+        string message = printQueue.Dequeue();
+        message = PrintLine(message);
+
+        while(message.Length > 0 || printQueue.Count != 0)
+        {
+            yield return new WaitForSeconds(waitTimeBetweenLines);
+            if(message.Length == 0) {
+                message = printQueue.Dequeue();
+            }
+            message = PrintLine(message);
+        }
+        printCoroutine = null;
+        EntryField.inputField.interactable = true;
     }
 
-
-    private string PrintLine(string line)
+    private string PrintLine(string textIn)
     {
+        int lineWidth = getLineWidthOfTextField(textIn);
+
         lastGennedTextLine = ((GameObject)Instantiate(textLinePrefab, Vector2.zero, Quaternion.identity)).GetComponent<Text>();
-        lastGennedTextLine.text = line;
-        Color originalCol = lastGennedTextLine.color;
+        lastGennedTextLine.text = textIn.Substring(0, lineWidth);
         lastGennedTextLine.transform.SetParent(transform);
         lastGennedTextLine.transform.SetSiblingIndex(lastGennedTextLine.transform.GetSiblingIndex() - 1);
         lastGennedTextLine.rectTransform.sizeDelta = mRectTransform.sizeDelta;
         lastGennedTextLine.transform.localScale = textLinePrefab.transform.localScale;
 
-        lastGennedTextLine.color = new Color(originalCol.r, originalCol.g, originalCol.b, 0);
-        Canvas.ForceUpdateCanvases();
-        lastGennedTextLine.color = new Color(originalCol.r, originalCol.g, originalCol.b, 1);
-        if (lastGennedTextLine.cachedTextGenerator.lineCount > 1)
-        {
-            var uiLines = lastGennedTextLine.cachedTextGenerator.lines;
-            string currentLine = line.Substring(0, uiLines[1].startCharIdx);
-            lastGennedTextLine.text = currentLine;
-            StartCoroutine(addWhiteSpace(lastGennedTextLine));
-            return line.Substring(uiLines[1].startCharIdx);
+        if(textIn.Length > lineWidth) {
+            return textIn.Substring(lineWidth);
         }
         else {
-            StartCoroutine(addWhiteSpace(lastGennedTextLine));
             return "";
         }
     }
 
-    private int getLineWidthOfTextField(Text textField)
+    private int getLineWidthOfTextField()
     {
         string testString = "";
         for (int i = 0; i < 1000; i++) {
             testString += "@";
         }
-        return getLineWidthOfTextField(textField, testString);
+        return getLineWidthOfTextField(testString);
     }
 
-    private int getLineWidthOfTextField(Text textField, string testString)
+    private int getLineWidthOfTextField(string testString)
     {
         Text testTextObj = ((GameObject)Instantiate(textLinePrefab, Vector2.zero, Quaternion.identity)).GetComponent<Text>();
         testTextObj.text = testString;
@@ -113,30 +120,4 @@ public class TextLog : MonoBehaviour {
         Destroy(testTextObj.gameObject);
         return width;
     }
-
-    IEnumerator addWhiteSpace(Text text) {
-        yield return null;
-        text.text += " ";
-    }
-
-    IEnumerator RecursivelyPrintLines()
-    {
-        if (EntryField.inputField.interactable) {
-            EntryField.inputField.interactable = false;
-        }
-        string message = printQueue.Dequeue();
-        message = PrintLine(message);
-        while(message.Length > 0 || printQueue.Count != 0)
-        {
-            yield return new WaitForSeconds(waitTimeBetweenLines);
-            if(message.Length == 0)
-            {
-                message = printQueue.Dequeue();
-            }
-            message = PrintLine(message);
-        }
-        printCoroutine = null;
-        EntryField.inputField.interactable = true;
-    }
-
 }
