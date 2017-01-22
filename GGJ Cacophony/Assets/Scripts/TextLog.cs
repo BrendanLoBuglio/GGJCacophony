@@ -44,6 +44,11 @@ public class TextLog : MonoBehaviour {
         instance.AddTextLine("", false);
     }
 
+    public void AddTextLine(string line)
+    {
+        AddTextLine(line, false);
+    }
+
 	public void AddTextLine(string line, bool addSpace = true)
     {
 
