@@ -1,20 +1,73 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityStandardAssets.ImageEffects;
+﻿using UnityEngine;
+using System.Collections;
 
-public class ScanLines : PostEffectsBase{
+[ExecuteInEditMode]
+public class ScanLines : MonoBehaviour
+{
+    #region Variables
+    public Shader curShader;
+    public float Distortion = 0.1f;
+    public float InputGamma = 2.4f;
+    public float OutputGamma = 2.2f;
+    private Material curMaterial;
+    #endregion
 
-    public Shader shader;
-    private Material m;
-
+    #region Properties
+    Material material
+    {
+        get
+        {
+            if (curMaterial == null)
+            {
+                curMaterial = new Material(curShader);
+                curMaterial.hideFlags = HideFlags.HideAndDontSave;
+            }
+            return curMaterial;
+        }
+    }
+    #endregion
+    // Use this for initialization
     void Start()
     {
-        m = new Material(shader);
+        if (!SystemInfo.supportsImageEffects)
+        {
+            enabled = false;
+            return;
+        }
     }
 
-    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    void OnRenderImage(RenderTexture sourceTexture, RenderTexture destTexture)
     {
-        Graphics.Blit(source, destination, m);
+        if (curShader != null)
+        {
+            material.SetFloat("_Distortion", Distortion);
+            material.SetFloat("_InputGamma", InputGamma);
+            material.SetFloat("_OutputGamma", OutputGamma);
+            material.SetVector("_TextureSize", new Vector2(512.0f, 512.0f));
+            Graphics.Blit(sourceTexture, destTexture, material);
+        }
+        else
+        {
+            Graphics.Blit(sourceTexture, destTexture);
+        }
+
+
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    void OnDisable()
+    {
+        if (curMaterial)
+        {
+            DestroyImmediate(curMaterial);
+        }
+
+    }
+
+
 }

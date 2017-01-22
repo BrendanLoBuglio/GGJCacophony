@@ -5,6 +5,32 @@
 	}
 
 	SubShader {
+		Pass{
+		ZTest Always Cull Off ZWrite Off
+		Fog{ Mode off }
+
+		CGPROGRAM
+#pragma vertex vert_img
+#pragma fragment frag
+#pragma fragmentoption ARB_precision_hint_fastest 
+#include "UnityCG.cginc"
+
+		uniform sampler2D _MainTex;
+		uniform sampler2D _VHSTex;
+
+		float _yScanline;
+		float _xScanline;
+
+		fixed4 frag(v2f_img i) : COLOR{
+			fixed4 c = tex2D(_MainTex, i.uv);
+		float scanLineIntensity= sin(i.uv.y + _Time);
+		if (scanLineIntensity > .5f) {
+			c = float4(1, 1, 1, 1);
+		}
+		return scanLineIntensity;
+		}
+		ENDCG
+	}
 		Pass {
 			ZTest Always Cull Off ZWrite Off
 			Fog { Mode off }

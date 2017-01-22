@@ -11,10 +11,11 @@ public class TextAdventureParser : MonoBehaviour {
 
     private void Start()
     {
-        TextLog.AddTextLineToTextLog("Press Enter to begin");
+        TextLog.AddTextLineToTextLog("Press Enter to begin", false);
+        TextLog.AddTextLineToTextLog("When playing enter help for instructions");
     }
 
-	public void ParseMessage(string message)
+    public void ParseMessage(string message)
     {
         if (!Input.GetKey(KeyCode.Return))
         {

@@ -216,12 +216,12 @@ Prefab:
     - target: {fileID: 224087978634670420, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -338
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224822829051131764, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 361
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114161752823080738, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
@@ -1406,7 +1406,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d33345dbb9cd649b53fb1841b9b052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shader: {fileID: 4800000, guid: 8fbdaf782c4e1c148b0b58f62d16a54d, type: 3}
+  curShader: {fileID: 4800000, guid: 8fbdaf782c4e1c148b0b58f62d16a54d, type: 3}
+  Distortion: 0.1
+  InputGamma: 2.4
+  OutputGamma: 1.13
 --- !u!1001 &1172859430
 Prefab:
   m_ObjectHideFlags: 0
@@ -1472,7 +1475,7 @@ Prefab:
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 315
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
