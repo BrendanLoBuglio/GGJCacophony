@@ -18,10 +18,10 @@ MonoBehaviour:
     dials have not turned in many a year, but they must turn again ere you may leave.
     Only the Dit and the Dah know the number."
   objects:
-  - name: 487
+  - name: 487;lock 487
     inspectionDescription: 
     validActions:
-    - actionName: dial;enter
+    - actionName: dial;enter;unlock
       events:
       - actionDescription: The lock falls away, and the path opens. North and up,
           the Labyrinth of Trash lies.
@@ -48,6 +48,41 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 1
+    active: 1
+  - name: lock
+    inspectionDescription: 
+    validActions:
+    - actionName: unlock
+      events:
+      - actionDescription: You try random combinations with no success. You need the
+          combination.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+      - actionDescription: The lock has already been opened.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: bite;hit;smack;
+      events:
+      - actionDescription: 'Although rusted, the lock holds. '
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+      - actionDescription: The lock has already been opened.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 1
   connections:
   - direction: 0
