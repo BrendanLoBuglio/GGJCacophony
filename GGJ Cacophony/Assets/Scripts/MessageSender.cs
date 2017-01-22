@@ -8,7 +8,6 @@ public class MessageSender : NetworkBehaviour {
     public static bool isTextPlayer;
     public static bool isWikiPlayer;
 
-
     static MessageSender _instance;
     public static MessageSender instance
     {
@@ -22,9 +21,12 @@ public class MessageSender : NetworkBehaviour {
         }
     }
 
+    private AudioSource source;
+
     public override void OnStartLocalPlayer()
     {
         _instance = this;
+        source = GetComponents<AudioSource>()[1];
     }
 
     [Command]
@@ -33,6 +35,7 @@ public class MessageSender : NetworkBehaviour {
         if (isTextPlayer)
         {
             MorseAudioController.instance.EnqueueMorseString(message);
+            PlayMessagePing();
         }
     }
 
@@ -42,7 +45,13 @@ public class MessageSender : NetworkBehaviour {
         if (isWikiPlayer)
         {
             MorseAudioController.instance.EnqueueMorseString(message);
+            PlayMessagePing();
         }
+    }
+
+    void PlayMessagePing()
+    {
+        PlayPing.Play();
     }
 
     public void PlayMorse(string message)

@@ -11,13 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce57d858bdec0d48920109d03480bfd, type: 3}
   m_Name: Screaming Square
   m_EditorClassIdentifier: 
-  description: "You are Vermi, Vermi\u2019s daughter, and you are burdened with the
-    gift of the Dit and the Dah. For many moons you have wandered the tunnels of the
-    Ceuler, clad in garb of grey and silver, and when you emerge once more amid the
-    cracked black stones of the Screaming Square, the sunlight greets you like an
-    old friend. The scar along the nape of your neck twinges, both mark of your exile
-    and festering executioner, and weakness buckles your knees. Soon the poison shall
-    claim you. The key to your survival lies beyond, in the kingdom of the Felurri."
+  description: The lock falls away, and you emerge amid the cracked black stones of
+    the Screaming Square, where the sunlight greets you like an old friend. The scar
+    along the nape of your neck twinges, both mark of your exile and festering executioner,
+    and weakness buckles your knees. Soon the poison shall claim you. The key to your
+    survival lies beyond, in the kingdom of the Felurri.
   objects: []
   connections:
   - direction: 0

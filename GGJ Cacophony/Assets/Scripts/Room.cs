@@ -96,6 +96,7 @@ public class WorldObject
     public string name;
     public string inspectionDescription;
     public VerbNounAction[] validActions;
+    public bool hidden = false;
     public bool active = true;
 
     public VerbNounAction FindValidAction(string verb)

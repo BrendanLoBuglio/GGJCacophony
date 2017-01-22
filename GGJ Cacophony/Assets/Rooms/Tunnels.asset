@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce57d858bdec0d48920109d03480bfd, type: 3}
+  m_Name: Tunnels
+  m_EditorClassIdentifier: 
+  description: "You are Vermi, Vermi\u2019s daughter, and you are burdened with the
+    gift of the Dit and the Dah. For many moons you have wandered the tunnels of the
+    Ceuler, clad in garb of grey and silver, and now you stand before the doors to
+    the overworld. An iron padlock, heavy with rust, seals the way; its weathered
+    dials have not turned in many a year, but they must turn again ere you may leave.
+    Only the Dit and the Dah know the number."
+  objects:
+  - name: 487
+    inspectionDescription: 
+    validActions:
+    - actionName: dial;enter
+      events:
+      - actionDescription: The lock falls away, and the path opens. North and up,
+          the Labyrinth of Trash lies.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 114692780015651348, guid: 18fcdda13004c34418329630055f7d29,
+                type: 2}
+              m_MethodName: AddToState
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: LockUnlocked
+                m_BoolArgument: 0
+              m_CallState: 2
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+      - actionDescription: The lock has already been opened.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    active: 1
+  connections:
+  - direction: 0
+    destinationRoom: {fileID: 11400000, guid: 47fcf68ec7d4a4f45b7adef093b9276a, type: 2}
+    requirements:
+    - LockUnlocked
+    inactiveExplanation: The lock still holds.
+  realRoom: 1

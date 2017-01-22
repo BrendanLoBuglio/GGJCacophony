@@ -7,6 +7,8 @@ public class TextLog : MonoBehaviour {
 
     public static bool GameOver;
 
+    public AudioClip lineClip;
+
     public GameObject textLinePrefab;
     private RectTransform mRectTransform;
     private Text lastGennedTextLine;
@@ -46,13 +48,20 @@ public class TextLog : MonoBehaviour {
 
     public void AddTextLine(string line)
     {
-        AddTextLine(line, false);
+        string[] lines = line.Split('\n');
+        foreach (string l in lines)
+        {
+            AddTextLine(l, false);
+        }
     }
 
 	public void AddTextLine(string line, bool addSpace = true)
     {
-
-        printQueue.Enqueue(line);
+        string[] lines = line.Split('\n');
+        foreach (string l in lines)
+        {
+            printQueue.Enqueue(l);
+        }
         // print a line for space
         if (addSpace)
         {
@@ -87,6 +96,8 @@ public class TextLog : MonoBehaviour {
 
     private string PrintLine(string textIn)
     {
+        AudioSource.PlayClipAtPoint(lineClip, Camera.main.transform.position);
+
         int lineWidth = getLineWidthOfTextField(textIn);
 
         lastGennedTextLine = ((GameObject)Instantiate(textLinePrefab, Vector2.zero, Quaternion.identity)).GetComponent<Text>();

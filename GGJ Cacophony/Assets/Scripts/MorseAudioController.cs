@@ -22,7 +22,7 @@ public class MorseAudioController : MonoBehaviour
         }
     }
 
-    private AudioSource mAudioSource;
+    public  AudioSource mAudioSource;
     private string currentSentence;
 
     private string[][] currentMorseMessage;
@@ -31,6 +31,8 @@ public class MorseAudioController : MonoBehaviour
     public int wordIndex { get; private set; }
     public int letterIndex { get; private set; }
     public int charIndex { get; private set; }
+
+    public static bool morsePlaying;
 
     private bool playing = true;
     private float timer = 0f;
@@ -117,6 +119,7 @@ public class MorseAudioController : MonoBehaviour
                     //Debug.Log("Playing element break at Time " + Time.time);
                     timer = dotLength * 1f;
                     mAudioSource.Stop();
+                    morsePlaying = false;
                     needElementSeparator = false;
                 }
                 else {
@@ -130,6 +133,7 @@ public class MorseAudioController : MonoBehaviour
                                 //Debug.Log("Playing dot at Time " + Time.time);
                                 timer = dotLength * 1f;
                                 mAudioSource.Play();
+                                morsePlaying = true;
                                 playingCharacter = true;
                                 if (charIndex < currentMorseMessage[wordIndex][letterIndex].Length - 1) {
                                     needElementSeparator = true;
@@ -140,6 +144,7 @@ public class MorseAudioController : MonoBehaviour
                                 //Debug.Log("Playing Dash at Time " + Time.time);
                                 timer = dotLength * 3f;
                                 mAudioSource.Play();
+                                morsePlaying = true;
                                 playingCharacter = true;
                                 if (charIndex < currentMorseMessage[wordIndex][letterIndex].Length - 1) {
                                     needElementSeparator = true;
@@ -149,6 +154,7 @@ public class MorseAudioController : MonoBehaviour
                     }
                     else {
                         mAudioSource.Stop();
+                        morsePlaying = false;
                         charIndex = 0;
                         letterIndex++;
                         timer = dotLength * MorseUtility.spaceBetweenLetters;
@@ -185,6 +191,7 @@ public class MorseAudioController : MonoBehaviour
         if(currentMorseMessage != null) {
             //Small delay:
             mAudioSource.Stop();
+            morsePlaying = false;
             timer = dotLength * 6f;
 
             needElementSeparator = false;

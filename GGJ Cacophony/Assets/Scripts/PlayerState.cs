@@ -55,6 +55,16 @@ public class PlayerState : MonoBehaviour {
 
         }
         TextLog.AddWhiteSpace();
+        if (currentRoom.objects.Length > 0)
+        {
+            TextLog.AddTextLineToTextLog("In the area there is ", false);
+            foreach (WorldObject o in currentRoom.objects)
+            {
+                if (!o.active || o.hidden) continue;
+                TextLog.AddTextLineToTextLog(o.name.Split(';')[0], false);
+            }
+            TextLog.AddWhiteSpace();
+        }
     }
 
 }

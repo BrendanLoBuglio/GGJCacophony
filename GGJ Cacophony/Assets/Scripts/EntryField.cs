@@ -26,14 +26,16 @@ public class EntryField : MonoBehaviour{
 
     public void SendTextMessage()
     {
-        MessageSender instance = MessageSender.instance;
-        if (instance != null)
+        if (Input.GetKey(KeyCode.Return) && inputField.text != "")
         {
-            instance.SendTextMessage(inputField.text);
+            MessageSender instance = MessageSender.instance;
+            if (instance != null)
+            {
+                instance.SendTextMessage(inputField.text);
+            }
+            inputField.ActivateInputField();
+            inputField.text = "";
         }
-        inputField.ActivateInputField();
-        inputField.text = "";
-
     }
 
     public void reset()
