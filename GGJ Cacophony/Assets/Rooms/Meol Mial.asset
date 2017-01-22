@@ -17,11 +17,20 @@ MonoBehaviour:
     garbage to obfuscate your passage. The whole forsaken place has been licked clean,
     and to pass unnoticed here you must find costume rather than camouflage. '
   objects:
-  - name: 
-    inspectionDescription: 
+  - name: cat
+    inspectionDescription: These Felurri are cleaner, more dignified then the ones
+      you saw in the trash mounds.
     validActions:
-    - actionName: 
-      events: []
+    - actionName: talk;speak;ask
+      events:
+      - actionDescription: They try to avert your eyes and ignore you the best they
+          can.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 1
   connections:
   - direction: 0

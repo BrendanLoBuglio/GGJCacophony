@@ -10,6 +10,14 @@ public class CallbackReciever : MonoBehaviour {
         toActivate.active = true;
     }
 
+    public void AddEatenObject(string name)
+    {
+        if (!PlayerState.instance.eatenThings.Contains(name))
+        {
+            PlayerState.instance.eatenThings.Add(name);
+        }
+    }
+
     public static void DisableObjectStatic(Room room, string objectName)
     {
         WorldObject toActivate = room.FindWorldObject(objectName, /*mustbeactive*/true);

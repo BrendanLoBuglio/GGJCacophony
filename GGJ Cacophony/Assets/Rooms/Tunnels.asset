@@ -51,7 +51,7 @@ MonoBehaviour:
     hidden: 1
     active: 1
   - name: lock
-    inspectionDescription: 
+    inspectionDescription: An iron padlock, heavy with rust.
     validActions:
     - actionName: unlock
       events:

@@ -17,7 +17,7 @@ MonoBehaviour:
     the fallen Felurri, who rot like napping dams in their marble caskets.
   objects:
   - name: grave
-    inspectionDescription: 
+    inspectionDescription: Graves litter the catacombs.
     validActions:
     - actionName: dig
       events:
@@ -50,9 +50,10 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 1
   - name: corpse
-    inspectionDescription: 
+    inspectionDescription: It lies still preserved in its casket.
     validActions:
     - actionName: skin
       events:
@@ -86,9 +87,10 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 0
   - name: skin
-    inspectionDescription: 
+    inspectionDescription: A rug of fur and flesh.
     validActions:
     - actionName: wear
       events:
@@ -117,6 +119,7 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 0
   connections:
   - direction: 1

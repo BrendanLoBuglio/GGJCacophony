@@ -140,7 +140,6 @@ public class TextAdventureParser : MonoBehaviour {
         PlayerState state = PlayerState.instance;
         bool ateLightbulb = false;
         bool ateBatter = false;
-        bool ateBerries = state.stateVariables.Contains("AteBerries");
 
         if (state.stateVariables.Contains("AteLightbulb"))
         {
@@ -150,29 +149,48 @@ public class TextAdventureParser : MonoBehaviour {
         {
             ateBatter = true;
         }
-        if (ateLightbulb && !ateBatter)
+        if (PlayerState.instance.eatenThings.Count == 0)
         {
-            TextLog.AddTextLineToTextLog("The lightbulb rests comfortably in your gut");
+            TextLog.AddTextLineToTextLog("Your empty belly rumbles");
         }
-        else if (!ateLightbulb && ateBatter)
+
+        string thingsInStomach = "In your stomach the ";
+        for(int k=0; k < state.eatenThings.Count; k++)
         {
-            TextLog.AddTextLineToTextLog("The batter weighs your belly down");
+            if(k > 0 && state.eatenThings.Count >2)
+            {
+                thingsInStomach += ", ";
+            }
+            else
+            {
+                thingsInStomach += " ";
+            }
+            if (k == state.eatenThings.Count-1 && state.eatenThings.Count > 1)
+            {
+                thingsInStomach += "and ";
+            }
+            thingsInStomach += state.eatenThings[k];
         }
-        else if (ateLightbulb && ateBatter)
+        if (state.eatenThings.Count == 1)
+        {
+            thingsInStomach += " tumbles around.";
+        }
+        else
+        {
+            thingsInStomach += " tumble around.";
+        }
+        TextLog.AddTextLineToTextLog(thingsInStomach, false);
+
+        if (ateLightbulb && ateBatter)
         {
             TextLog.AddTextLineToTextLog("Soon your stomach has done its work, and you pass a steaming pile of broken glass, from which the batter juts like a flag. The one-eyed Krobi sees it, just as you slip beyond sight; it caws with glee when it discovers your leavings, for it knows that where there is a cake-mixer, cake must follow. You need only wait before it chokes upon the glass. Everything has gone according to plan.");
             state.stateVariables.Remove("AteLightbulb");
             state.stateVariables.Remove("AteBatter");
+            state.eatenThings.Remove("lightbulb");
+            state.eatenThings.Remove("batter");
             CallbackReciever.EnableObjectStatic(PlayerState.instance.currentRoom, "crows");
         }
-        else if (!ateLightbulb && !ateBatter && !ateBerries)
-        {
-            TextLog.AddTextLineToTextLog("Your empty belly rumbles");
-        }
-        if (state.stateVariables.Contains("AteBerries"))
-        {
-            TextLog.AddTextLineToTextLog("You can feel the berries burning through your intestines.");
-        }
+        TextLog.AddWhiteSpace();
     }
 
     public void StartGame()

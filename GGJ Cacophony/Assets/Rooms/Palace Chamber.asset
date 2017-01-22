@@ -20,7 +20,7 @@ MonoBehaviour:
     so brazenly into my chambers.\u201D"
   objects:
   - name: king;the king
-    inspectionDescription: 
+    inspectionDescription: He waits patiently.
     validActions:
     - actionName: seduce;flirt
       events:
@@ -53,9 +53,10 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 1
   - name: slam poetry
-    inspectionDescription: 
+    inspectionDescription: The memory of a memory long past returns to you.
     validActions:
     - actionName: recite
       events:
@@ -125,9 +126,10 @@ MonoBehaviour:
               m_CallState: 2
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 0
   - name: king;with king;with the king
-    inspectionDescription: 
+    inspectionDescription: His eyes are full of lust.
     validActions:
     - actionName: sleep;sex;fuck
       events:
@@ -158,9 +160,10 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 0
   - name: penicillin
-    inspectionDescription: 
+    inspectionDescription: A small unassuming pill.
     validActions:
     - actionName: eat;take;swallow
       events:
@@ -197,9 +200,10 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 0
   - name: goodbye
-    inspectionDescription: 
+    inspectionDescription: Finally.
     validActions:
     - actionName: wave
       events:
@@ -228,6 +232,7 @@ MonoBehaviour:
               m_CallState: 2
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    hidden: 0
     active: 0
   connections:
   - direction: 3

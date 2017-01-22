@@ -11,11 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce57d858bdec0d48920109d03480bfd, type: 3}
   m_Name: Dribbling Lights
   m_EditorClassIdentifier: 
-  description: The only Felurri in the Labyrinth of Trash gather beneath the glow
+  description: 'The only Felurri in the Labyrinth of Trash gather beneath the glow
     of the Dribbling Lights. Here are the mangy, the balding, the three-legged and
     the bent-whiskered. Even at this pitiful juncture, among the most pitiable of
-    people, they hold themselves with the arrogance of their kind. They whisper as
-    you pass, and though you do not listen, you cannot help but hear.
+    people, they hold themselves with the arrogance of their kind. '
   objects:
   - name: lights
     inspectionDescription: They glow in a rainbow of colors. Felurri paint their tails
@@ -25,6 +24,15 @@ MonoBehaviour:
       events:
       - actionDescription: You eat a light. It shatters between your teeth and stains
           your snout a dozen colors.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: take;grab
+      events:
+      - actionDescription: You try to bring the light with you but your hands slip
+          and the light shatters in a pool of color.
         actionCallback:
           m_PersistentCalls:
             m_Calls: []
@@ -40,6 +48,15 @@ MonoBehaviour:
       events:
       - actionDescription: You leap on the back of a Felurri tom and try to bite his
           jugular, but it yowls and scampers away before you can make the kill.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: speak;talk
+      events:
+      - actionDescription: They whisper as you pass, and though you do not listen,
+          you cannot help but hear.
         actionCallback:
           m_PersistentCalls:
             m_Calls: []

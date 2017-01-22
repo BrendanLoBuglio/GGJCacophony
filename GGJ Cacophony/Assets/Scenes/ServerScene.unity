@@ -216,12 +216,20 @@ Prefab:
     - target: {fileID: 224087978634670420, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: m_AnchoredPosition.y
+<<<<<<< HEAD
+      value: 0
+=======
       value: -338
+>>>>>>> origin/master
       objectReference: {fileID: 0}
     - target: {fileID: 224822829051131764, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: m_SizeDelta.y
+<<<<<<< HEAD
+      value: 0
+=======
       value: 361
+>>>>>>> origin/master
       objectReference: {fileID: 0}
     - target: {fileID: 114161752823080738, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
@@ -1898,6 +1906,8 @@ MonoBehaviour:
 
     Use "Digest" to take a moment and digest
 
+    Use "Inspect" to look closely at an object
+
     Press - to decrease playback speed
 
     Press + to increase playback speed
@@ -1906,8 +1916,12 @@ MonoBehaviour:
 
     Press ] to go forward one letter
 
+<<<<<<< HEAD
+    Press \ to toggle playback'
+=======
     Press \ to toggle layback'
   morseDisplay: {fileID: 222997282}
+>>>>>>> origin/master
 --- !u!114 &1703171178
 MonoBehaviour:
   m_ObjectHideFlags: 0

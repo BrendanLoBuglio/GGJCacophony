@@ -11,12 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce57d858bdec0d48920109d03480bfd, type: 3}
   m_Name: Blibdoolpoolp
   m_EditorClassIdentifier: 
-  description: "Ah, Blibdoolpoolp. What more can be said about this stretch of steaming
+  description: 'Ah, Blibdoolpoolp. What more can be said about this stretch of steaming
     trash? The garbage is bountiful and rich and always at least partially edible,
     and the burrows of the clever Rakki border this corner of the Labyrinth. They
-    dry-wring their hands, black masks wrinkled as they squint at your passing. \u201CMarsu!
-    Cousin Marsu! What scavenge do you seek?\u201D You tell them, and they laugh,
-    for only the dead could be bolder."
+    dry-wring their hands, black masks wrinkled as they squint at your passing. '
   objects:
   - name: raccoon
     inspectionDescription: The Rakki shall always be your friends, but they shall
@@ -26,6 +24,38 @@ MonoBehaviour:
       events:
       - actionDescription: You root around for Rakki corpses, but the bodies are buried
           too deep to reach.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: talk;ask;speak
+      events:
+      - actionDescription: "\u201CMarsu! Cousin Marsu! What scavenge do you seek?\u201D
+          You tell them, and they laugh, for only the dead could be bolder."
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
+  - name: garbage; in garbage
+    inspectionDescription: The garbage is bountiful and rich and always at least partially
+      edible
+    validActions:
+    - actionName: eat
+      events:
+      - actionDescription: At least partially edible does not  meet your standards.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: roll
+      events:
+      - actionDescription: You get covered in the garbage's scent. You feel the Rakki
+          eying you hungrily.
         actionCallback:
           m_PersistentCalls:
             m_Calls: []

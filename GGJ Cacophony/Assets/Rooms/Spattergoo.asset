@@ -30,6 +30,14 @@ MonoBehaviour:
             m_Calls: []
           m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+    - actionName: smell
+      events:
+      - actionDescription: It smells pleasant. Like rotting flesh.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
     hidden: 0
     active: 1
   - name: bubbles
@@ -40,6 +48,14 @@ MonoBehaviour:
       events:
       - actionDescription: You try your best to eat a bubble. It goes exactly as well
           as you expected.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: blow
+      events:
+      - actionDescription: They drift away from you where you cannot harrass them.
         actionCallback:
           m_PersistentCalls:
             m_Calls: []
