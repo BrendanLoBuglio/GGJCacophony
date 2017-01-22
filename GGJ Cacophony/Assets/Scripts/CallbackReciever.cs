@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class CallbackReciever : MonoBehaviour {
 
-	public void EnableObject(Room room, string objectName)
+    public static void EnableObjectStatic(Room room, string objectName)
     {
         WorldObject toActivate = room.FindWorldObject(objectName, /*mustbeactive*/false);
         toActivate.active = true;
+    }
+
+	public void EnableObject(Room room, string objectName)
+    {
+        EnableObjectStatic(room, objectName);
     }
 
     public void AddToState(string stateName)

@@ -6,7 +6,6 @@ public class TextAdventureParser : MonoBehaviour {
 
     [TextArea(1,30)]
     public string helpText;
-    public Room gameStartRoom;
     bool gameStarted;
 
     private void Start()
@@ -23,7 +22,7 @@ public class TextAdventureParser : MonoBehaviour {
         }
         if (message.Replace(" ", "") != "")
         {
-            TextLog.instance.AddTextLine(message);
+            TextLog.instance.AddTextLine(message, false);
         }
         message = message.ToLower();
         string[] splitMessage = message.Split(' ');
@@ -70,10 +69,42 @@ public class TextAdventureParser : MonoBehaviour {
         }
     }
 
+    public void Digest()
+    {
+        PlayerState state = PlayerState.instance;
+        bool ateLightbulb = false;
+        bool ateBatter = false;
+        if (state.stateVariables.Contains("AteLightbulb"))
+        {
+            ateLightbulb = true;
+        }
+        if (state.stateVariables.Contains("AteBatter"))
+        {
+            ateBatter = true;
+        }
+        if (ateLightbulb && !ateBatter)
+        {
+            TextLog.AddTextLineToTextLog("The lightbulb rests comfortably in your gut");
+        }
+        else if (!ateLightbulb && ateBatter)
+        {
+            TextLog.AddTextLineToTextLog("The batter weighs your belly down");
+        }
+        else if (ateLightbulb && ateBatter)
+        {
+            TextLog.AddTextLineToTextLog("Soon your stomach has done its work, and you pass a steaming pile of broken glass, from which the batter juts like a flag. The one-eyed Krobi sees it, just as you slip beyond sight; it caws with glee when it discovers your leavings, for it knows that where there is a cake-mixer, cake must follow. You need only wait before it chokes upon the glass. Everything has gone according to plan.");
+            CallbackReciever.EnableObjectStatic(PlayerState.instance.currentRoom, "crows");
+        }
+        else if (!ateLightbulb && !ateBatter)
+        {
+            TextLog.AddTextLineToTextLog("Your empty belly rumbles");
+        }
+    }
+
     public void StartGame()
     {
         gameStarted = true;
-        PlayerState.instance.EnterRoom(gameStartRoom);
+        PlayerState.instance.EnterRoom(RoomInstancer.instance.startRoom);
     }
 
     public bool CheckIfVerbExists(string[] splitMessage)
@@ -107,9 +138,16 @@ public class TextAdventureParser : MonoBehaviour {
     {
         string action = splitMessage[0];
         System.Text.StringBuilder builder = new System.Text.StringBuilder();
-        for(int k=1; k < splitMessage.Length; k++)
+        bool beginning = true;
+        for (int k=1; k < splitMessage.Length; k++)
         {
-            builder.Append(splitMessage[k]);
+            if (splitMessage[k] != "the")
+            {
+                if (beginning)
+                    beginning = false;
+                builder.Append(" ");
+                builder.Append(splitMessage[k]);
+            }
         }
         string nounString = builder.ToString();
         Room currentRoom = PlayerState.instance.currentRoom;
