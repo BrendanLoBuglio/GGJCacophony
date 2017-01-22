@@ -15,8 +15,7 @@ public class EntryField : MonoBehaviour{
 
     void Update()
     {
-        if (inputField.interactable)
-        {
+        if (inputField.interactable) {
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(inputField.gameObject);
         }
         else
