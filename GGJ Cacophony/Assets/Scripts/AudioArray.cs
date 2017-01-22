@@ -30,10 +30,44 @@ public class AudioArray : MonoBehaviour
 
 	}
 	void Update (){
-		if (Input.GetKeyDown (KeyCode.A)) {
+		if (Input.GetKeyDown (KeyCode.Q)) {
 			AudioSource maudio = GetComponent<AudioSource> ();
 			maudio.PlayOneShot (list[0]);
+
+		}
+		if (Input.GetKeyDown (KeyCode.W)) {
+			AudioSource maudio = GetComponent<AudioSource> ();
+			maudio.PlayOneShot (list[1]);
 		
+
+		}
+		if (Input.GetKeyDown (KeyCode.E)) {
+			AudioSource maudio = GetComponent<AudioSource> ();
+			maudio.PlayOneShot (list[2]);
+
+		}
+		if (Input.GetKeyDown (KeyCode.R)) {
+			AudioSource maudio = GetComponent<AudioSource> ();
+			maudio.PlayOneShot (list[3]);
+
+		}
+
+		if (Input.GetKeyDown (KeyCode.T)) {
+			AudioSource maudio = GetComponent<AudioSource> ();
+			maudio.PlayOneShot (list[4]);
+
+		}
+
+		if (Input.GetKeyDown (KeyCode.Y)) {
+			AudioSource maudio = GetComponent<AudioSource> ();
+			maudio.PlayOneShot (list[5]);
+
+		}
+
+		if (Input.GetKeyDown (KeyCode.U)) {
+			AudioSource maudio = GetComponent<AudioSource> ();
+			maudio.PlayOneShot (list[6]);
+
 		}
 	}
 	
