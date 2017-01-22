@@ -16,7 +16,37 @@ MonoBehaviour:
     in your wake like lost children. Around you, the walls of the Labyrinth of Trash
     lean inward, their shadows lengthening as the plague sun limps across the bruised
     sky.
-  objects: []
+  objects:
+  - name: sludge
+    inspectionDescription: The sludge drips from your paws. It is warm, and faintly
+      glows.
+    validActions:
+    - actionName: eat
+      events:
+      - actionDescription: You guzzle down a mouthful of the glowing sludge. It radiates
+          peacefully in your stomach.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
+  - name: bubbles
+    inspectionDescription: You prod at the rising bubbles, and they burst with a wet
+      pop.
+    validActions:
+    - actionName: eat
+      events:
+      - actionDescription: You try your best to eat a bubble. It goes exactly as well
+          as you expected.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
   connections:
   - direction: 0
     destinationRoom: {fileID: 11400000, guid: 1eea65ca91040c14e9f2ae321e6bf059, type: 2}

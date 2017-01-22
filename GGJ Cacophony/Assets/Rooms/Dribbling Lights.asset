@@ -16,7 +16,37 @@ MonoBehaviour:
     the bent-whiskered. Even at this pitiful juncture, among the most pitiable of
     people, they hold themselves with the arrogance of their kind. They whisper as
     you pass, and though you do not listen, you cannot help but hear.
-  objects: []
+  objects:
+  - name: lights
+    inspectionDescription: They glow in a rainbow of colors. Felurri paint their tails
+      with the dribbles, to respect their ancient god Nyan.
+    validActions:
+    - actionName: eat
+      events:
+      - actionDescription: You eat a light. It shatters between your teeth and stains
+          your snout a dozen colors.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
+  - name: cat
+    inspectionDescription: The Felurri are hard to spend time with, but they were
+      close to the forerunners, and still hold many of their secrets.
+    validActions:
+    - actionName: eat
+      events:
+      - actionDescription: You leap on the back of a Felurri tom and try to bite his
+          jugular, but it yowls and scampers away before you can make the kill.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
   connections:
   - direction: 0
     destinationRoom: {fileID: 11400000, guid: 5a67b1045a3150d45a0738561ba41ac3, type: 2}

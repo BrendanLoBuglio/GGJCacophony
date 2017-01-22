@@ -140,6 +140,8 @@ public class TextAdventureParser : MonoBehaviour {
         PlayerState state = PlayerState.instance;
         bool ateLightbulb = false;
         bool ateBatter = false;
+        bool ateBerries = state.stateVariables.Contains("AteBerries");
+
         if (state.stateVariables.Contains("AteLightbulb"))
         {
             ateLightbulb = true;
@@ -163,9 +165,13 @@ public class TextAdventureParser : MonoBehaviour {
             state.stateVariables.Remove("AteBatter");
             CallbackReciever.EnableObjectStatic(PlayerState.instance.currentRoom, "crows");
         }
-        else if (!ateLightbulb && !ateBatter)
+        else if (!ateLightbulb && !ateBatter && !ateBerries)
         {
             TextLog.AddTextLineToTextLog("Your empty belly rumbles");
+        }
+        if (state.stateVariables.Contains("AteBerries"))
+        {
+            TextLog.AddTextLineToTextLog("You can feel the berries burning through your intestines.");
         }
     }
 
