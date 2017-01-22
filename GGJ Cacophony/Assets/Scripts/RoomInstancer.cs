@@ -61,6 +61,13 @@ public class RoomInstancer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+        if (Input.GetKey(KeyCode.Equals))
+        {
+            Time.timeScale = 9;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
 	}
 }

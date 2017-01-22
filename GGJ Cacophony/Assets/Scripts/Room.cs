@@ -45,7 +45,7 @@ public class Room : ScriptableObject{
         for(int k=0; k < objects.Length; k++)
         {
             if (mustBeActive && objects[k].active == false) continue;
-            if(objects[k].name.ToLower() == name.ToLower())
+            if(objects[k].name.ToLower().Replace(" ", "") == name.ToLower().Replace(" ", ""))
             {
                 return objects[k];
             }
