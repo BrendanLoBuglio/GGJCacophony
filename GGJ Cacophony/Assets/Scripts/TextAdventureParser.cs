@@ -7,6 +7,7 @@ public class TextAdventureParser : MonoBehaviour {
     [TextArea(1,30)]
     public string helpText;
     bool gameStarted;
+    [SerializeField] private MorseDisplayConsole morseDisplay;
 
     private void Start()
     {
@@ -171,6 +172,7 @@ public class TextAdventureParser : MonoBehaviour {
     public void StartGame()
     {
         gameStarted = true;
+        morseDisplay.Show();
         PlayerState.instance.EnterRoom(RoomInstancer.instance.startRoom);
     }
 

@@ -12,6 +12,8 @@ public class MorseDisplayConsole : MonoBehaviour
     private const int readingHeadOffset = 10;
     private const string borderDeco = "# ";
     private const float newMessageBlinkRate = 1.25f;
+    [SerializeField] private CanvasGroup mCanvasGroup;
+
 
     private void Start ()
     {
@@ -22,6 +24,11 @@ public class MorseDisplayConsole : MonoBehaviour
     private void Update()
     {
         drawConsole();
+    }
+
+    public void Show()
+    {
+        mCanvasGroup.alpha = 1f;
     }
 
     private void drawConsole ()
