@@ -10,6 +10,9 @@ public class TextLog : MonoBehaviour {
     private Text lastGennedTextLine;
     public float waitTimeBetweenLines = .5f;
     private Color col;
+    Coroutine printCoroutine;
+
+    Queue<string> printQueue = new Queue<string>();
 
     public static TextLog _instance;
     public static TextLog instance {
@@ -37,10 +40,13 @@ public class TextLog : MonoBehaviour {
         // print a line for space
         if (addSpace)
         {
-            PrintLine("");
+            printQueue.Enqueue("");    
         }
-        StartCoroutine(RecursivelyPrintLines(line));
-        
+        printQueue.Enqueue(line);
+        if (printCoroutine == null)
+        {
+            printCoroutine = StartCoroutine(RecursivelyPrintLines());
+        }
     }
 
     private void Update()
@@ -113,14 +119,22 @@ public class TextLog : MonoBehaviour {
         text.text += " ";
     }
 
-    IEnumerator RecursivelyPrintLines(string message)
+    IEnumerator RecursivelyPrintLines()
     {
+        EntryField.inputField.interactable = false;
+        string message = printQueue.Dequeue();
         message = PrintLine(message);
-        while(message.Length > 0)
+        while(message.Length > 0 || printQueue.Count != 0)
         {
             yield return new WaitForSeconds(waitTimeBetweenLines);
+            if(message.Length == 0)
+            {
+                message = printQueue.Dequeue();
+            }
             message = PrintLine(message);
         }
+        printCoroutine = null;
+        EntryField.inputField.interactable = true;
     }
 
 }
