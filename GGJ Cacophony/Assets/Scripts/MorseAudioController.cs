@@ -36,6 +36,7 @@ public class MorseAudioController : MonoBehaviour
     private float timer = 0f;
     private bool needElementSeparator = false;
     private bool playingCharacter = false;
+    private bool betweenMessages = false;
     private MorsePlaybackState playbackState = MorsePlaybackState.stopped;
     public float morsePlaybackScalar { get; private set; }
 
@@ -67,12 +68,16 @@ public class MorseAudioController : MonoBehaviour
         charIndex = 0;
         needElementSeparator = false;
         playingCharacter = false;
+        betweenMessages = false;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A)) {
             EnqueueMorseString("Test morse");
+        }
+        if (Input.GetKeyDown(KeyCode.S)) {
+            Debug.Log(this.IsBetweenMessages());
         }
 
         interpretControlInput();
@@ -107,6 +112,7 @@ public class MorseAudioController : MonoBehaviour
         if (currentMorseMessage != null && playing) {
             timer -= Time.deltaTime * morsePlaybackScalar;
             if (timer <= 0) {
+                betweenMessages = false;
                 if (needElementSeparator) {
                     //Debug.Log("Playing element break at Time " + Time.time);
                     timer = dotLength * 1f;
@@ -153,6 +159,7 @@ public class MorseAudioController : MonoBehaviour
                             if (wordIndex >= currentMorseMessage.Length) {
                                 wordIndex = 0;
                                 timer = dotLength * MorseUtility.spaceBetweenMessages;
+                                betweenMessages = true;
                                 playingCharacter = false;
                                 //Debug.Log("Playing message break at Time " + Time.time);
                             }
@@ -178,10 +185,11 @@ public class MorseAudioController : MonoBehaviour
         if(currentMorseMessage != null) {
             //Small delay:
             mAudioSource.Stop();
-            timer = dotLength * 3f;
+            timer = dotLength * 6f;
 
             needElementSeparator = false;
             playingCharacter = false;
+            betweenMessages = false;
 
             if (forward) {
                 letterIndex++;
@@ -244,12 +252,24 @@ public class MorseAudioController : MonoBehaviour
                 elementCounter++;
             }
             else {
-                output += "           ";
+                for(int j = 0; j < MorseUtility.spaceBetweenMessages; j++)
+                output += " ";
             }
         }
         
         while(output.Length < minWidth && output.Length > 0) {
             output += output;
+        }
+
+        if (betweenMessages) {
+            int totalElements = 0;
+            for(int j = 0; j < currentMorseMessage.Length; j++) {
+                for(int k = 0; k < currentMorseMessage[j].Length; k++) {
+                    totalElements++;
+                }
+            }
+
+            currentLetterIndex = 1 + totalElements + (int)(MorseUtility.spaceBetweenMessages  * (1f - timer / (dotLength * MorseUtility.spaceBetweenMessages)));
         }
         return output;
     }
@@ -262,5 +282,10 @@ public class MorseAudioController : MonoBehaviour
     public int GetQueuedMessageCount()
     {
         return upcomingMorseMessages.Count;
+    }
+
+    public bool IsBetweenMessages()
+    {
+        return betweenMessages;
     }
 }
