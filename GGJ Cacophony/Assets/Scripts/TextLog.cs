@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class TextLog : MonoBehaviour {
 
     public GameObject textLinePrefab;
+    private RectTransform mRectTransform;
+    private Text lastGennedTextLine;
     public float waitTimeBetweenLines = .5f;
     private Color col;
 
@@ -18,6 +20,11 @@ public class TextLog : MonoBehaviour {
             }
             return _instance;
         }
+    }
+
+    private void Start()
+    {
+        mRectTransform = this.GetComponent<RectTransform>();
     }
 
     public static void AddTextLineToTextLog(string line, bool addSpace = true)
@@ -36,30 +43,69 @@ public class TextLog : MonoBehaviour {
         
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S) && lastGennedTextLine != null) {
+            getLineWidthOfTextField(lastGennedTextLine);
+        }
+    }
+
+
     private string PrintLine(string line)
     {
-        GameObject  spawnedLine = (GameObject)Instantiate(textLinePrefab, Vector2.zero, Quaternion.identity);
-        Text text = spawnedLine.GetComponent<Text>();
-        text.text = line;
-        Color originalCol = text.color;
-        spawnedLine.transform.SetParent(transform);
-        spawnedLine.transform.SetSiblingIndex(spawnedLine.transform.GetSiblingIndex() - 1);
+        lastGennedTextLine = ((GameObject)Instantiate(textLinePrefab, Vector2.zero, Quaternion.identity)).GetComponent<Text>();
+        lastGennedTextLine.text = line;
+        Color originalCol = lastGennedTextLine.color;
+        lastGennedTextLine.transform.SetParent(transform);
+        lastGennedTextLine.transform.SetSiblingIndex(lastGennedTextLine.transform.GetSiblingIndex() - 1);
+        lastGennedTextLine.rectTransform.sizeDelta = mRectTransform.sizeDelta;
+        lastGennedTextLine.transform.localScale = textLinePrefab.transform.localScale;
 
-        text.color = new Color(originalCol.r, originalCol.g, originalCol.b, 0);
+        lastGennedTextLine.color = new Color(originalCol.r, originalCol.g, originalCol.b, 0);
         Canvas.ForceUpdateCanvases();
-        text.color = new Color(originalCol.r, originalCol.g, originalCol.b, 1);
-        if (text.cachedTextGenerator.lineCount > 1)
+        lastGennedTextLine.color = new Color(originalCol.r, originalCol.g, originalCol.b, 1);
+        if (lastGennedTextLine.cachedTextGenerator.lineCount > 1)
         {
-            var uiLines = text.cachedTextGenerator.lines;
+            var uiLines = lastGennedTextLine.cachedTextGenerator.lines;
             string currentLine = line.Substring(0, uiLines[1].startCharIdx);
-            text.text = currentLine;
-            StartCoroutine(addWhiteSpace(text));
+            lastGennedTextLine.text = currentLine;
+            StartCoroutine(addWhiteSpace(lastGennedTextLine));
             return line.Substring(uiLines[1].startCharIdx);
         }
         else {
-            StartCoroutine(addWhiteSpace(text));
+            StartCoroutine(addWhiteSpace(lastGennedTextLine));
             return "";
         }
+    }
+
+    private int getLineWidthOfTextField(Text textField)
+    {
+        string testString = "";
+        for (int i = 0; i < 1000; i++) {
+            testString += "@";
+        }
+        return getLineWidthOfTextField(textField, testString);
+    }
+
+    private int getLineWidthOfTextField(Text textField, string testString)
+    {
+        Text testTextObj = ((GameObject)Instantiate(textLinePrefab, Vector2.zero, Quaternion.identity)).GetComponent<Text>();
+        testTextObj.text = testString;
+        testTextObj.rectTransform.sizeDelta = mRectTransform.sizeDelta;
+        testTextObj.color = Color.clear;
+        testTextObj.transform.SetParent(this.transform);
+        testTextObj.transform.SetSiblingIndex(0);
+        Canvas.ForceUpdateCanvases();
+
+        if(testTextObj.cachedTextGenerator.lines.Count <= 1) {
+            //Only one liner:
+            return testString.Length;
+        }
+        int width = testTextObj.cachedTextGenerator.lines[1].startCharIdx;
+        Debug.Log("Returning width " + width);
+
+        Destroy(testTextObj.gameObject);
+        return width;
     }
 
     IEnumerator addWhiteSpace(Text text) {
