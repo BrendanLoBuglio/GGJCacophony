@@ -11,8 +11,6 @@ public class MorseDisplayConsole : MonoBehaviour
     private const int displayRows = 6;
     private const int readingHeadOffset = 10;
     private const string borderDeco = "# ";
-    private const string readingCurrentTest = "YOU ARE READING THE CURRENT MESSAGE";
-    private const string pressTabMessageTest = "PRESS <TAB> TO ACCEPT NEW MESSAGE";
 
     private void Start ()
     {
@@ -72,7 +70,9 @@ public class MorseDisplayConsole : MonoBehaviour
             }
             else if (r == 2) {
                 mText.text += drawStringWithPadding(Mathf.FloorToInt((float)noDecoWidth / 2f), "");
-                mText.text += drawStringWithPadding(Mathf.CeilToInt((float)noDecoWidth / 2f), pressTabMessageTest);
+
+                string pressTabText = MorseAudioController.instance.GetQueuedMessageCount() == 0 ? "" : "PRESS <TAB> TO ACCEPT NEW MESSAGE";
+                mText.text += drawStringWithPadding(Mathf.CeilToInt((float)noDecoWidth / 2f), pressTabText);
             }
             else if (r == 3) {
                 for(int i = 0; i < readingHeadOffset - 1; i++) {
@@ -90,7 +90,6 @@ public class MorseDisplayConsole : MonoBehaviour
                 }
 
                 playbackStream += MorseAudioController.instance.GetPlaybackStateString(noDecoWidth * 2f, out playbackIndex);
-                Debug.Log("playbackIndex is " + playbackIndex + " and PlaybackStream is " + playbackStream);
 
                 if(playbackStream.Length > readingHeadOffset) {
                     playbackStream = playbackStream.Substring(playbackIndex, noDecoWidth);

@@ -22,13 +22,6 @@ public class MessageSender : NetworkBehaviour {
         }
     }
 
-    MorseAudioController morsePlayer;
-
-    void Start()
-    {
-        morsePlayer = GetComponent<MorseAudioController>();
-    }
-
     public override void OnStartLocalPlayer()
     {
         _instance = this;
@@ -39,7 +32,7 @@ public class MessageSender : NetworkBehaviour {
     {
         if (isTextPlayer)
         {
-            morsePlayer.EnqueueMorseString(message);
+            MorseAudioController.instance.EnqueueMorseString(message);
         }
     }
 
@@ -48,7 +41,7 @@ public class MessageSender : NetworkBehaviour {
     {
         if (isWikiPlayer)
         {
-            morsePlayer.EnqueueMorseString(message);
+            MorseAudioController.instance.EnqueueMorseString(message);
         }
     }
 
