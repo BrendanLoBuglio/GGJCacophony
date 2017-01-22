@@ -9,15 +9,27 @@ public class MorseAudioController : MonoBehaviour
 {
     [SerializeField] private float dotLength = 0.09f;
 
+
+    public static MorseAudioController _instance;
+    public static MorseAudioController instance {
+        get {
+            if (_instance == null) {
+                _instance = GameObject.FindObjectOfType<MorseAudioController>();
+            }
+            return _instance;
+        }
+    }
+
     private AudioSource mAudioSource;
     private string currentSentence;
 
     private string[][] currentMorseMessage;
     private Queue<string[][]> upcomingMorseMessages;
 
-    private int wordIndex = 0;
-    private int letterIndex = 0;
-    private int charIndex = -1;
+    public int wordIndex    {get; private set;}
+    public int letterIndex  {get; private set;}
+    public int charIndex    {get; private set;}
+
     private float timer = 0f;
     private bool needElementSeparator = false;
     private bool playingCharacter = false;
@@ -29,7 +41,6 @@ public class MorseAudioController : MonoBehaviour
         mAudioSource = GetComponent<AudioSource>();
         upcomingMorseMessages = new Queue<string[][]>();
 	}
-
 
     public void EnqueueMorseString(string morseStringIn)
     {
@@ -67,7 +78,7 @@ public class MorseAudioController : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0) {
                 if (needElementSeparator) {
-                    Debug.Log("Playing element break at Time " + Time.time);
+                    //Debug.Log("Playing element break at Time " + Time.time);
                     timer = dotLength * 1f;
                     mAudioSource.Stop();
                     needElementSeparator = false;
@@ -80,7 +91,7 @@ public class MorseAudioController : MonoBehaviour
                         switch (currentMorseMessage[wordIndex][letterIndex][charIndex]) {
                             case '.':
                                 //Play Dot:
-                                Debug.Log("Playing dot at Time " + Time.time);
+                                //Debug.Log("Playing dot at Time " + Time.time);
                                 timer = dotLength * 1f;
                                 mAudioSource.Play();
                                 playingCharacter = true;
@@ -90,7 +101,7 @@ public class MorseAudioController : MonoBehaviour
                                 break;
                             case '-':
                                 //Play Dash:
-                                Debug.Log("Playing Dash at Time " + Time.time);
+                                //Debug.Log("Playing Dash at Time " + Time.time);
                                 timer = dotLength * 3f;
                                 mAudioSource.Play();
                                 playingCharacter = true;
@@ -113,23 +124,59 @@ public class MorseAudioController : MonoBehaviour
                                 wordIndex = 0;
                                 timer = dotLength * MorseUtility.spaceBetweenMessages;
                                 playingCharacter = false;
-                                Debug.Log("Playing message break at Time " + Time.time);
+                                //Debug.Log("Playing message break at Time " + Time.time);
                             }
                             else {
                                 playingCharacter = false;
-                                Debug.Log("Playing word break at Time " + Time.time);
+                                //Debug.Log("Playing word break at Time " + Time.time);
                             }
                         }
                         else {
                             playingCharacter = false;
-                            Debug.Log("Playing Letter break at Time " + Time.time);
+                            //Debug.Log("Playing Letter break at Time " + Time.time);
                         }
                     }
 
-                    Debug.Log("The current letter is \"" + currentMorseMessage[wordIndex][letterIndex] + "\"");
+                    //Debug.Log("The current letter is \"" + currentMorseMessage[wordIndex][letterIndex] + "\"");
                 }
             }
         }
+    }
+
+    public string GetPlaybackStateString(float minWidth, out int currentLetterIndex)
+    {
+        currentLetterIndex = 0;
+        if(currentMorseMessage == null) {
+            currentLetterIndex = 0;
+            return "";
+        }
+
+        string output = "";
+
+        int elementCounter = 0;
+
+        for(int i = 0; i < currentMorseMessage.Length; i++) {
+            for(int j = 0; j < currentMorseMessage[i].Length; j++) {
+                output += 'X';
+                elementCounter++;
+                if(i == wordIndex && j == letterIndex) {
+                    currentLetterIndex = elementCounter;
+                }
+            }
+
+            if(i < currentMorseMessage.Length - 1) {
+                output += ' ';
+                elementCounter++;
+            }
+            else {
+                output += "           ";
+            }
+        }
+        
+        while(output.Length < minWidth && output.Length > 0) {
+            output += output;
+        }
+        return output;
     }
 
     //private IEnumerator playMorseSequence(string morseStringIn)

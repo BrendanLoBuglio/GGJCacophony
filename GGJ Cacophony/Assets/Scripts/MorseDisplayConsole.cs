@@ -9,6 +9,7 @@ public class MorseDisplayConsole : MonoBehaviour
 {
     private Text mText;
     private const int displayRows = 6;
+    private const int readingHeadOffset = 10;
     private const string borderDeco = "# ";
     private const string processingTest = "PROCESSING SIGNAL AT 1.0X SPEED";
     private const string readingCurrentTest = "YOU ARE READING THE CURRENT MESSAGE";
@@ -22,16 +23,17 @@ public class MorseDisplayConsole : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) {
-            drawBorders();
-        }
+        drawBorders();
     }
 
     private void drawBorders ()
     {
         int textAreaWidth = TextLog.instance.GetLineWidthOfTextField();
         int noDecoWidth = getNoDecoWidth(textAreaWidth);
+        int playbackIndex = 0;
 
+        mText.text = "";
+        
         for(int r = 0; r < displayRows; r++) {
             mText.text += borderDeco;
             if (r == 0 || r == displayRows - 1) {
@@ -46,6 +48,34 @@ public class MorseDisplayConsole : MonoBehaviour
             else if (r == 2) {
                 mText.text += drawStringWithPadding(Mathf.FloorToInt((float)noDecoWidth / 2f), "");
                 mText.text += drawStringWithPadding(Mathf.CeilToInt((float)noDecoWidth / 2f), pressTabMessageTest);
+            }
+            else if (r == 3) {
+                for(int i = 0; i < readingHeadOffset - 1; i++) {
+                    mText.text += ' ';
+                }
+                mText.text += 'V';
+                for (int i = 0; i < noDecoWidth - readingHeadOffset; i++) {
+                    mText.text += ' ';
+                }
+            }
+            else if (r == 4) {
+                string playbackStream = ""; 
+                for (int i = 0; i < readingHeadOffset; i++) {
+                    playbackStream += ' ';
+                }
+
+                playbackStream += MorseAudioController.instance.GetPlaybackStateString(noDecoWidth * 2f, out playbackIndex);
+                Debug.Log("playbackIndex is " + playbackIndex + " and PlaybackStream is " + playbackStream);
+
+                if(playbackStream.Length > readingHeadOffset) {
+                    playbackStream = playbackStream.Substring(playbackIndex, noDecoWidth);
+                    mText.text += playbackStream;
+                }
+                else {
+                    for(int i = 0; i < noDecoWidth; i++) {
+                        mText.text += ' ';
+                    }
+                }
             }
 
             mText.text += borderDecoReverse();
