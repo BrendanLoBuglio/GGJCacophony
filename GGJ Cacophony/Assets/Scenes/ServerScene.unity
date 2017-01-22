@@ -216,12 +216,12 @@ Prefab:
     - target: {fileID: 224087978634670420, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -338
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224822829051131764, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 361
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114161752823080738, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
@@ -771,7 +771,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -864,7 +864,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -944,7 +944,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1449,7 +1449,7 @@ Prefab:
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -157.5
       objectReference: {fileID: 0}
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
@@ -1459,7 +1459,7 @@ Prefab:
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 315
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
@@ -1469,7 +1469,7 @@ Prefab:
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
@@ -1479,7 +1479,7 @@ Prefab:
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
@@ -1615,7 +1615,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300001, guid: b36b30df5c1e34a26a5cb4edf1574351,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 14a27c9c44dbc0c4a97f0e7d1f606de2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a33c3fdbc2f09874296eb578eb6ee7ea, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1673,7 +1673,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1941,6 +1941,7 @@ MonoBehaviour:
   currentRoom: {fileID: 0}
   stateVariables: []
   allVerbs: []
+  eatenThings: []
 --- !u!4 &1703171179
 Transform:
   m_ObjectHideFlags: 0
