@@ -16,7 +16,53 @@ MonoBehaviour:
     and the thorns of the stunted shrubs, but you carry on without pause. If you fall
     in the Field, you shall not be the first. There are worse places to die, than
     amid the warriors now dust. '
-  objects: []
+  objects:
+  - name: berries
+    inspectionDescription: Berries grow on the short shrubs. They look edible enough
+    validActions:
+    - actionName: Eat
+      events:
+      - actionDescription: They taste uncomfortably acidic .
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 114692780015651348, guid: 18fcdda13004c34418329630055f7d29,
+                type: 2}
+              m_MethodName: AddToState
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: AteBerries
+                m_BoolArgument: 0
+              m_CallState: 2
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
+  - name: stones
+    inspectionDescription: 'They''re everywhere. '
+    validActions:
+    - actionName: kick
+      events:
+      - actionDescription: Ouch.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    - actionName: throw
+      events:
+      - actionDescription: It sails into the distance. You hear a faint yelp.
+        actionCallback:
+          m_PersistentCalls:
+            m_Calls: []
+          m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+    hidden: 0
+    active: 1
   connections:
   - direction: 0
     destinationRoom: {fileID: 11400000, guid: c2a01c49b04e262459fc93f68fd51977, type: 2}
