@@ -12,23 +12,29 @@ public class AudioArray : MonoBehaviour
 	{
 		list = new AudioClip[] {
 			
-			(AudioClip)Resources.Load ("Audio/I Wanna CROMCH"),
+			(AudioClip)Resources.Load ("I Wanna CROMCH"),
 
-			(AudioClip)Resources.Load ("Audio/Morse Tone"),
+			(AudioClip)Resources.Load ("Morse Tone"),
 
-			(AudioClip)Resources.Load ("Audio/Inhale 2"),
+			(AudioClip)Resources.Load ("Inhale 2"),
 
-			(AudioClip)Resources.Load ("Audio/Hamburger Shuffle"),
+			(AudioClip)Resources.Load ("Hamburger Shuffle"),
 
-			(AudioClip)Resources.Load ("Audio/I Ate A Styrofoam Cup For This "),
+			(AudioClip)Resources.Load ("I Ate A Styrofoam Cup For This "),
 
-			(AudioClip)Resources.Load ("Audio/Wind")
+			(AudioClip)Resources.Load ("Wind"),
 
-
-
-
-
+			(AudioClip)Resources.Load ("Rain7")
+		
 		};
+
+	}
+	void Update (){
+		if (Input.GetKeyDown (KeyCode.A)) {
+			AudioSource maudio = GetComponent<AudioSource> ();
+			maudio.PlayOneShot (list[0]);
+		
+		}
 	}
 	
 
