@@ -121,7 +121,6 @@ public class TextLog : MonoBehaviour {
             return testString.Length;
         }
         int width = testTextObj.cachedTextGenerator.lines[1].startCharIdx;
-        Debug.Log("Returning width " + width);
 
         Destroy(testTextObj.gameObject);
         return width;
