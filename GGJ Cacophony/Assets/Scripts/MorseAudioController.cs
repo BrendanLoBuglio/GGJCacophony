@@ -8,7 +8,7 @@ public enum MorsePlaybackState { stopped, playingDot, playingDash, elementBreak,
 public class MorseAudioController : MonoBehaviour
 {
     [SerializeField] private float dotLength = 0.2f;
-    [SerializeField] private float minSpeed = 0.5f;
+    [SerializeField] private float minSpeed = 0.3f;
     [SerializeField] private float maxSpeed = 2f;
 
 
@@ -82,10 +82,10 @@ public class MorseAudioController : MonoBehaviour
 
     private void interpretControlInput()
     {
-        if (Input.GetKeyDown(KeyCode.Minus)) {
+        if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.Underscore) || Input.GetKeyDown(KeyCode.KeypadMinus)) {
             IncrementTimescale(false);
         }
-        if (Input.GetKeyDown(KeyCode.Plus) || Input.GetKeyDown(KeyCode.Equals)) {
+        if (Input.GetKeyDown(KeyCode.Plus) || Input.GetKeyDown(KeyCode.Equals) || Input.GetKeyDown(KeyCode.KeypadPlus)) {
             IncrementTimescale(true);
         }
         if (Input.GetKeyDown(KeyCode.LeftBracket)) {
@@ -95,7 +95,9 @@ public class MorseAudioController : MonoBehaviour
             MoveReadingHead(true);
         }
         if (Input.GetKeyDown(KeyCode.Backslash)) {
-            playingOrPaused = !playingOrPaused;
+            if(currentMorseMessage != null) {
+                playingOrPaused = !playingOrPaused;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Tab)) {
             playNextMorseString();

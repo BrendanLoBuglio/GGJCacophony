@@ -216,12 +216,12 @@ Prefab:
     - target: {fileID: 224087978634670420, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -338
       objectReference: {fileID: 0}
     - target: {fileID: 224822829051131764, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 361
       objectReference: {fileID: 0}
     - target: {fileID: 114161752823080738, guid: f033386cfa18f5242a4617d14f237032,
         type: 2}
@@ -1475,7 +1475,7 @@ Prefab:
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 315
       objectReference: {fileID: 0}
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
@@ -1996,7 +1996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dotLength: 0.2
-  minSpeed: 0.5
+  minSpeed: 0.3
   maxSpeed: 2
   mAudioSource: {fileID: 0}
 --- !u!82 &1703171182

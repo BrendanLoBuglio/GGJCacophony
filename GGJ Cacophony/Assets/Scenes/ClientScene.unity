@@ -372,7 +372,7 @@ Prefab:
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 360
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
@@ -382,7 +382,7 @@ Prefab:
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 720
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224004517178730762, guid: ae5f05e5ae3eeb240ab9cc0d5e0b78e9,
         type: 2}
@@ -557,7 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dotLength: 0.2
-  minSpeed: 0.5
+  minSpeed: 0.3
   maxSpeed: 2
   mAudioSource: {fileID: 0}
 --- !u!82 &953496506
@@ -1051,7 +1051,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1131,7 +1131,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1212,7 +1212,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
