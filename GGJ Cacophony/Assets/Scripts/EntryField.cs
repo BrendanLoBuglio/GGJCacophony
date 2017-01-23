@@ -51,11 +51,16 @@ public class EntryField : MonoBehaviour{
 
     public void RemoveCommands()
     {
-        inputField.text =  inputField.text.Replace("[", "");
+        inputField.text = inputField.text.Replace("[", "");
         inputField.text = inputField.text.Replace("]", "");
         inputField.text = inputField.text.Replace(@"\", "");
         inputField.text = inputField.text.Replace("-", "");
         inputField.text = inputField.text.Replace("=", "");
+        inputField.text = inputField.text.Replace("+", "");
+        inputField.text = inputField.text.Replace("_", "");
+        inputField.text = inputField.text.Replace("{", "");
+        inputField.text = inputField.text.Replace("}", "");
+        inputField.text = inputField.text.Replace("|", "");
     }
 
 }

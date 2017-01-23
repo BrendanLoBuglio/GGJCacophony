@@ -34,8 +34,7 @@ public class MessageSender : NetworkBehaviour {
     {
         if (isTextPlayer)
         {
-            MorseAudioController.instance.EnqueueMorseString(message);
-            PlayMessagePing();
+            DisplayMessage(message);
         }
     }
 
@@ -44,7 +43,20 @@ public class MessageSender : NetworkBehaviour {
     {
         if (isWikiPlayer)
         {
+            DisplayMessage(message);
+        }
+    }
+
+    public void DisplayMessage(string message)
+    {
+        if (MessageTimer.onMorse)
+        {
             MorseAudioController.instance.EnqueueMorseString(message);
+            PlayMessagePing();
+        }
+        else
+        {
+            TextLog.AddTextLineToTextLog("From anonymous: " + message);
             PlayMessagePing();
         }
     }
