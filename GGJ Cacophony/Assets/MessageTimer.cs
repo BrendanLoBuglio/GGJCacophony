@@ -22,6 +22,7 @@ public class MessageTimer : MonoBehaviour {
             onMorse = true;
             TextLog.AddWhiteSpace();
             TextLog.AddTextLineToTextLog("Signal has degraded, can now only send and recieve morse");
+            Destroy(gameObject);
         }
 	}
 }
